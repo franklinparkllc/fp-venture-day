@@ -1,5 +1,5 @@
 ---
-version: "1.6.0"
+version: "1.6.1"
 last_updated: "2025-10-29"
 default_year: 2025
 years:
