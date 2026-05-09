@@ -76,9 +76,9 @@ TBD
 **BREAK**
 
 ### 10:40am – 11:00am
-**Xue (Sherry) Gao**
+**TBD**
 
-Xue (Sherry) Gao is the Presidential Penn Compact Associate Professor in the Department of Chemical and Biomolecular Engineering at the University of Pennsylvania, with a joint appointment in Bioengineering and core faculty status at Penn's Center for Precision Engineering for Health. The Gao Lab engineers next-generation CRISPR systems with improved specificity and multiplexing to make genome editing safer and more versatile, while also developing ultrasensitive CRISPR-based viral diagnostics for pandemic and epidemic response. A second arm of the lab applies these editing tools to fungal genome engineering to mine cryptic biosynthetic gene clusters for novel small-molecule therapeutics — recent work identified the asperigimycins, a new class of fungal natural products with potent anticancer activity. Dr. Gao earned her PhD in Chemical and Biomolecular Engineering from UCLA and joined Penn Engineering in January 2024 from Rice University. Her honors include the BMES-CMBE Rising Star Award (2024), the NSF CAREER Award (2022), the NIH Maximizing Investigators' Research Award (2020), and selection by the National Academy of Engineering for the US-China Frontiers of Engineering Symposium.
+TBD
 
 ### 11:00am – 11:20am
 **TBD**
