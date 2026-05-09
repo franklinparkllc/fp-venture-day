@@ -1,6 +1,6 @@
 ---
-version: "1.6.1"
-last_updated: "2025-10-29"
+version: "1.7.0"
+last_updated: "2026-05-09"
 default_year: 2025
 years:
   2026:
@@ -54,40 +54,43 @@ years:
 
 ## 2026
 
-### 8:30am – 8:45am
+### 9:15am – 9:30am
 **Opening Remarks**
 
-### 8:45am – 9:15am
+### 9:30am – 9:50am
+**Noor Momin**
+
+Noor Momin is the Stephenson Foundation Term Assistant Professor of Innovation in the Department of Bioengineering at the University of Pennsylvania. Her Immunoengineering for Health lab combines cardiovascular immunology, protein engineering, and pharmacokinetic modeling to develop targeted therapies for cardiovascular disease, with extensions into autoimmunity and cancer. The lab designs antibody-decorated nanoparticles and engineered cytokines that direct immunomodulatory payloads to inflamed tissues — including arterial plaques and post-infarct myocardium — to dampen pathological inflammation and promote healing without the systemic toxicity that has limited prior immunotherapies. Recent work spans matrix-targeted interleukin-4 for cardiac healing after myocardial infarction, B-cell-driven autoantibody contributions to atrial fibrillation (Nature Cardiovascular Research, 2025), and a resistin-like molecule gamma collaboration on ventricular tachycardia (Science, 2025). Dr. Momin received her PhD in Biological Engineering from MIT and trained as a postdoctoral fellow at Massachusetts General Hospital and Harvard. Her honors include the American Heart Association Transformational Project Award (2025) and the National Siebel Scholar in Bioengineering. A patented cytokine immunotherapy from her doctoral work has been licensed to Cullinan Oncology.
+
+### 9:50am – 10:10am
 **TBD**
 
 TBD
 
-### 9:15am – 9:45am
+### 10:10am – 10:30am
 **TBD**
 
 TBD
 
-### 9:45am – 10:15am
+### 10:30am – 10:40am
+**BREAK**
+
+### 10:40am – 11:00am
+**Xue (Sherry) Gao**
+
+Xue (Sherry) Gao is the Presidential Penn Compact Associate Professor in the Department of Chemical and Biomolecular Engineering at the University of Pennsylvania, with a joint appointment in Bioengineering and core faculty status at Penn's Center for Precision Engineering for Health. The Gao Lab engineers next-generation CRISPR systems with improved specificity and multiplexing to make genome editing safer and more versatile, while also developing ultrasensitive CRISPR-based viral diagnostics for pandemic and epidemic response. A second arm of the lab applies these editing tools to fungal genome engineering to mine cryptic biosynthetic gene clusters for novel small-molecule therapeutics — recent work identified the asperigimycins, a new class of fungal natural products with potent anticancer activity. Dr. Gao earned her PhD in Chemical and Biomolecular Engineering from UCLA and joined Penn Engineering in January 2024 from Rice University. Her honors include the BMES-CMBE Rising Star Award (2024), the NSF CAREER Award (2022), the NIH Maximizing Investigators' Research Award (2020), and selection by the National Academy of Engineering for the US-China Frontiers of Engineering Symposium.
+
+### 11:00am – 11:20am
 **TBD**
 
 TBD
 
-### 10:15am – 10:45am
+### 11:20am – 11:40am
 **TBD**
 
 TBD
 
-### 10:45am – 11:15am
-**TBD**
-
-TBD
-
-### 11:15am – 11:45am
-**TBD**
-
-TBD
-
-### 11:45am – 1:00pm
+### 11:40am – 1:00pm
 **LUNCH**
 
 ## 2025
