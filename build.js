@@ -111,7 +111,6 @@ function renderYear(y, currentYear) {
   <header class="year-head">
     <div class="year-id">
       <span class="num">${y.year}</span>
-      <span class="badge">${isCurrent ? 'Live' : 'Archived'}</span>
     </div>
     <div class="year-info">
       <div class="tag">${esc(y.tagline)}</div>
@@ -120,10 +119,11 @@ function renderYear(y, currentYear) {
         ${renderSupporters(y.supporters)}
       </div>
     </div>
-    <div class="year-toggle">
+    <div class="year-status">
+      <span class="badge">${isCurrent ? 'Live' : 'Archived'}</span>
       <span class="count">${pad2(talkCount)} talks</span>
-      <span class="chev">+</span>
     </div>
+    <span class="chev">+</span>
   </header>
   <div class="year-body"><div class="inner"><div class="session-list">
 ${sessionsHtml}
@@ -250,27 +250,26 @@ const STYLES = `
 
   .year-head {
     display: grid;
-    grid-template-columns: 200px 1fr auto;
-    gap: 24px; padding: 28px 0;
+    grid-template-columns: 200px 1fr auto 30px;
+    column-gap: 24px; padding: 28px 0;
     align-items: baseline; cursor: pointer; user-select: none;
     transition: padding .15s ease;
   }
-  .year-head:hover .year-toggle .chev { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .year-head:hover .chev { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
-  .year-id { display: flex; align-items: baseline; gap: 12px; }
   .year-id .num {
     font-family: var(--serif); font-weight: 400;
     font-size: 56px; line-height: 0.9; letter-spacing: -0.025em;
     color: var(--ink);
   }
   .year[data-current="true"] .year-id .num { color: var(--accent); }
-  .year-id .badge {
+  .badge {
     font-family: var(--mono); font-size: 10px;
     text-transform: uppercase; letter-spacing: 0.18em;
     color: var(--muted); border: 1px solid var(--line);
-    padding: 3px 8px; align-self: end; margin-bottom: 8px;
+    padding: 3px 8px;
   }
-  .year[data-current="true"] .year-id .badge { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  .year[data-current="true"] .badge { color: var(--bg); background: var(--accent); border-color: var(--accent); }
 
   .year-info { font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.7; }
   .year-info .tag {
@@ -287,21 +286,23 @@ const STYLES = `
   .year-info .supporters a:hover { color: var(--accent); border-bottom-color: var(--accent); }
   .year-info .supporters .sep { color: var(--dim); }
 
-  .year-toggle {
-    display: flex; align-items: center; gap: 14px;
+  .year-status {
+    display: flex; flex-direction: column; align-items: flex-end;
+    gap: 10px;
     font-family: var(--mono); font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.16em;
     color: var(--muted);
   }
-  .year-toggle .count { color: var(--ink); }
-  .year-toggle .chev {
+  .year-status .count { color: var(--ink); }
+  .chev {
     width: 30px; height: 30px;
     border: 1px solid var(--line);
     display: grid; place-items: center;
     color: var(--ink); font-family: var(--mono);
+    align-self: center;
     transition: transform .25s ease, background .15s ease, color .15s ease, border-color .15s ease;
   }
-  .year[data-open="true"] .year-toggle .chev { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .year[data-open="true"] .chev { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--bg); }
 
   .year-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
   .year[data-open="true"] .year-body { grid-template-rows: 1fr; }
@@ -376,7 +377,11 @@ const STYLES = `
   }
 
   @media (max-width: 800px) {
-    .year-head { grid-template-columns: 1fr; gap: 12px; }
+    .year-head { grid-template-columns: 1fr auto; gap: 12px; }
+    .year-id { grid-column: 1; }
+    .year-info { grid-column: 1 / -1; order: 3; }
+    .year-status { grid-column: 1 / -1; order: 4; flex-direction: row; align-items: center; gap: 14px; }
+    .chev { grid-column: 2; grid-row: 1; align-self: start; }
     .session { grid-template-columns: 60px 90px 1fr 26px; gap: 12px; }
     .session-affil { display: none; }
   }`;
