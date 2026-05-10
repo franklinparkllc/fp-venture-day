@@ -191,6 +191,21 @@ const STYLES = `
     color: var(--muted); max-width: 56ch;
     margin: 22px 0 0; text-wrap: balance;
   }
+  .hero .cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-top: 28px;
+    padding: 11px 18px;
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    background: transparent;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .hero .cta:hover { background: var(--accent); color: var(--bg); }
+  .hero .cta .arrow { font-family: var(--serif); font-size: 15px; line-height: 1; }
 
   .hosts-strip {
     border-top: 1px solid var(--line);
@@ -419,6 +434,7 @@ const html = `<!doctype html>
   <div class="label">${esc(site.hero.label)}</div>
   <h1>${escAllowEm(site.hero.headline)}</h1>
   <p class="lede">${escAllowEm(site.hero.lede)}</p>
+  ${site.hero.cta ? `<a class="cta" href="${esc(site.hero.cta.url)}" target="_blank" rel="noopener">${esc(site.hero.cta.label)} <span class="arrow">→</span></a>` : ''}
 </header>
 
 <section class="wrap hosts-strip" id="hosts">
