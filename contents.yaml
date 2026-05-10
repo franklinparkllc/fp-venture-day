@@ -1,0 +1,324 @@
+# Venture Day — public archive content
+# Years are listed newest first.
+# Session `kind` is one of: talk | remarks | break
+
+site:
+  title: "Venture Day — Specimen Index"
+  brand: "VENTURE.DAY"
+  version: "v12"
+  current_year: 2026
+  updated: "05.09.2026"
+  city: "philadelphia"
+  hero:
+    label: "Catalog · Twelfth annual gathering"
+    headline: "Specimen index of <em>unreleased</em> biotech."
+    lede: "A working catalog of every talk given at Venture Day. Each entry is a founder, a PI, or a team presenting science before it becomes a round."
+  colophon: "A catalog of unreleased biotech presented at Venture Day. Set in IBM Plex."
+  year_range: "2014 — 2026"
+
+hosts:
+  - name: Franklin Park
+    url: https://www.franklinparkllc.com/
+  - name: Wexford
+    url: https://wexfordscitech.com/about/wexford-team/
+  - name: Wilson Sonsini
+    url: https://www.wsgr.com/en/people/matthew-j-meyer.html
+
+years:
+  - year: 2026
+    tagline: Twelfth annual gathering
+    supporters:
+      - { name: Franklin Park,   url: "https://www.franklinparkllc.com/" }
+      - { name: Wexford,         url: "https://wexfordscitech.com/about/wexford-team/" }
+      - { name: Wilson Sonsini,  url: "https://www.wsgr.com/en/people/matthew-j-meyer.html" }
+    sessions:
+      - { kind: remarks, time: "9:15 – 9:30",  speaker: "Opening Remarks" }
+      - kind: talk
+        time: "9:30 – 9:50"
+        speaker: Noor Momin
+        affil: "Univ. of Pennsylvania — Bioengineering"
+        topic: "Immunoengineering for cardiovascular disease"
+        bio: >-
+          The Stephenson Foundation Term Assistant Professor of Innovation at Penn Bioengineering. Her Immunoengineering for Health lab combines cardiovascular immunology, protein engineering and pharmacokinetic modeling to develop targeted therapies for cardiovascular disease, with extensions into autoimmunity and cancer. The lab designs antibody-decorated nanoparticles and engineered cytokines that direct immunomodulatory payloads to inflamed tissues — including arterial plaques and post-infarct myocardium — to dampen pathological inflammation and promote healing without the systemic toxicity that has limited prior immunotherapies. Recent work spans matrix-targeted IL-4 for cardiac healing after MI, B-cell-driven autoantibody contributions to atrial fibrillation (Nature Cardiovascular Research, 2025), and a resistin-like molecule gamma collaboration on ventricular tachycardia (Science, 2025). PhD, MIT Biological Engineering. A patented cytokine immunotherapy from her doctoral work has been licensed to Cullinan Oncology.
+      - { kind: talk, time: "9:50 – 10:10",  speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - { kind: talk, time: "10:10 – 10:30", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - { kind: break, time: "10:30 – 10:40", label: "Break" }
+      - { kind: talk, time: "10:40 – 11:00", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - { kind: talk, time: "11:00 – 11:20", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - { kind: talk, time: "11:20 – 11:40", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - { kind: break, time: "11:40 – 1:00", label: "Lunch" }
+
+  - year: 2025
+    tagline: Eleventh annual gathering
+    supporters:
+      - { name: Franklin Park,  url: "https://www.franklinparkllc.com/" }
+      - { name: B+labs,         url: "https://blabscira.com/" }
+      - { name: Wilson Sonsini, url: "https://www.wsgr.com/en/people/matthew-j-meyer.html" }
+    sessions:
+      - { kind: remarks, time: "8:30 – 8:45", speaker: "Opening Remarks" }
+      - kind: talk
+        time: "8:45 – 9:15"
+        speaker: Pranam Chatterjee
+        affil: "Penn Bioengineering & CIS"
+        topic: "Generative biologic design"
+        bio: >-
+          Assistant Professor of Bioengineering and Computer & Information Science at Penn. His Programmable Biology Group develops new generative models for the de novo design of peptide and protein biologics, spanning algorithmic theory through pre-clinical validation in vitro and in vivo. The lab develops therapeutic interventions for rare neurodegenerative diseases, pediatric sarcomas, viral infections, infertility and substance use disorders. SB, SM and PhD from MIT. Recipient of the NIH MIRA Award and the Hartwell Individual Biomedical Research Award. Co-founder of Gameto, UbiquiTx and AtomBioworks.
+      - kind: talk
+        time: "9:15 – 9:45"
+        speaker: Matthew Hayes
+        affil: "Penn Psychiatry"
+        topic: "Neural pathways of food intake & body weight"
+        bio: >-
+          Albert J. Stunkard Professor in Psychiatry at the Perelman School of Medicine. Vice Chair of Basic and Translational Neuroscience and director of the Molecular and Neural Basis of Psychiatric Disease Section. His research identifies and characterizes neural signaling pathways that control food intake and body weight regulation, with the goal of developing treatments for obesity and related co-morbidities without the off-target nausea and vomiting of current options.
+      - kind: talk
+        time: "9:45 – 10:15"
+        speaker: Topher Brooke
+        affil: "MasterSwitch Bio"
+        topic: "mRNA therapies to reverse MASH liver damage"
+        bio: >-
+          CEO of MasterSwitch Bio, a biotech in Ambler, PA co-founded by Nobel Prize-winning scientist Drew Weissman. The company develops mRNA-based therapies to reverse liver damage caused by MASH (metabolic dysfunction-associated steatohepatitis). Under Brooke's leadership MasterSwitch secured a $250k investment from the Hatch Biofund after winning the Pennsylvania Biotechnology Center entrepreneur spotlight pitch competition.
+      - kind: talk
+        time: "10:15 – 10:45"
+        speaker: Kara Spiller
+        affil: "Drexel BIOMED"
+        topic: "Macrophage cell therapy for fibrosis"
+        bio: >-
+          URBN Endowed Professor of Biomedical Innovation in Drexel's School of Biomedical Engineering, Science and Health Systems. Researches the role of immune cells in tissue repair and the design of immunomodulatory biomaterials and drug delivery systems for regenerative medicine. Her team invented a novel approach to macrophage cell therapy that uses scalable biomaterials for long-term phenotype control without genetic engineering, with applications in fibrosis.
+      - kind: talk
+        time: "10:45 – 11:15"
+        speaker: Jake Brenner
+        affil: "Penn Medicine / ClearXpression"
+        topic: "DNA-loaded lipid nanoparticles"
+        bio: >-
+          Assistant professor and physician in Penn's Department of Medicine. Cares for ICU patients and runs a genetic medicine lab. His lab developed the first safe and effective DNA-loaded lipid nanoparticles (DNA-LNPs), enabling expression of any size protein for >1 year per dose, in just the chosen cell type. To commercialize the DNA-LNPs the lab spun out ClearXpression, aiming to bring gene therapy to common chronic diseases ranging from osteoarthritis to atherosclerosis. In 2025 the DNA-LNPs received the CRS Gene Therapy Scientific Achievement award and Falling Walls listed them as a Top 10 Breakthrough of the Year.
+      - kind: talk
+        time: "11:15 – 11:45"
+        speaker: Anthony Phan
+        affil: "Penn Vet Medicine"
+        topic: "IL-12 in mRNA vaccines"
+        bio: >-
+          Research associate in Christopher A. Hunter's lab at Penn Vet. Co-lead author on Science Immunology research showing that adding IL-12 to mRNA vaccines enhances CD8+ T-cell responses, improving protection against SARS-CoV-2, influenza, melanoma and listeria. The work could reduce injection frequency and dose-related adverse events while extending immunity.
+      - { kind: break, time: "11:45 – 1:00", label: "Lunch" }
+
+  - year: 2024
+    tagline: Tenth annual gathering
+    supporters:
+      - { name: Franklin Park,  url: "https://www.franklinparkllc.com" }
+      - { name: Dakota Studio,  url: "https://www.dakota.com/team" }
+    sessions:
+      - kind: talk
+        time: "9:00 – 9:30"
+        speaker: Roland Kolbeck
+        affil: "Spirovant"
+        topic: "Inhaled AAV gene therapy for cystic fibrosis"
+        bio: >-
+          Spirovant's transformative technology addresses potency challenges in gene therapy by administering AAV with Augmenter directly to the lungs. The clinical-stage lead program, SP-101, is the first and only inhaled AAV developed with an inhaled Augmenter (doxorubicin) that enhances transgene expression by 100–1,000×, targeting the unmet needs of CF patients who do not benefit from small molecule modulators.
+      - kind: talk
+        time: "9:30 – 10:00"
+        speaker: Yael Mosse
+        affil: "CHOP"
+        topic: "ALK-directed ADC for pediatric neuroblastoma"
+        bio: >-
+          Developing a first-in-class ALK-directed antibody-drug conjugate for pediatric cancers, particularly neuroblastoma, based on ALK protein expression in tumors but not in normal tissues.
+      - kind: talk
+        time: "10:00 – 10:30"
+        speaker: Will Bailis
+        affil: "CHOP"
+        topic: "Label-free lymphocyte sorting"
+        bio: >-
+          Breakthrough technology that isolates rare therapeutically effective lymphocytes — B and T cells — using label-free sorting. The platform enables high-throughput purification of B cells and selection of potent T cells for adoptive therapy without additional cell culture, advancing monoclonal antibodies and CAR-T therapies.
+      - kind: talk
+        time: "10:30 – 11:00"
+        speaker: Yi Xing
+        affil: "CHOP — Computational Genomic Medicine"
+        topic: "Long-read RNA sequencing for genetic diagnosis"
+        bio: >-
+          Established the Center for Computational and Genomic Medicine at CHOP in 2018. His lab pioneered a long-read RNA sequencing platform that comprehensively profiles RNA changes and variations, aiding timely diagnosis of genetic diseases with improved accuracy.
+      - { kind: break, time: "11:00 – 12:00", label: "Lunch" }
+      - kind: talk
+        time: "12:00 – 12:30"
+        speaker: Jonathan Miner
+        affil: "Penn Medicine"
+        topic: "Gene & small-molecule therapies for autoimmune disease"
+        bio: >-
+          Over 300 million people live with rare genetic diseases, many untreatable. The Miner lab generates model systems, gene therapies and small-molecule inhibitors for some of the most devastating autoimmune diseases caused by single-gene mutations, opening opportunities for the treatment of autoimmunity, cancer and premature cellular senescence.
+      - kind: talk
+        time: "12:30 – 1:00"
+        speaker: "Arthur Howe & Abdolmohamad Rostami"
+        affil: "Jefferson"
+        topic: "First disease-halting therapy for MS"
+        bio: >-
+          Developing the first disease-halting therapy for multiple sclerosis, with potential application to other autoimmune diseases. The strategy uses oligodendrocyte-derived extracellular vesicles containing multiple myelin antigens to induce immune tolerance — without the severe side effects of current immunosuppressives.
+      - kind: talk
+        time: "1:00 – 1:30"
+        speaker: Christoph Ellebrecht
+        affil: "Penn Dermatology"
+        topic: "Targeting tissue-resident T cells in psoriasis"
+        bio: >-
+          Manipulating immune cells for precision cellular immunotherapies. Targets tissue-resident T cells, which contribute to chronic autoimmune diseases like psoriasis. Using genome engineering and high-throughput screening, his group has identified novel therapeutic targets that could dislodge these cells and offer potential cures.
+
+  - year: 2023
+    tagline: Ninth annual gathering
+    supporters:
+      - { name: Franklin Park,  url: "https://www.franklinparkllc.com" }
+      - { name: Dakota Studio,  url: "https://www.dakota.com/team" }
+    sessions:
+      - kind: talk
+        time: "9:15 – 9:45"
+        speaker: "Mark Sellmyer & Derek Miller"
+        affil: "Vellum Biosciences"
+        topic: "PET imaging probe for cell & gene therapy"
+        bio: >-
+          Vellum, a Penn UPSTART spin-out, developed iTAG, a patent-protected imaging probe that provides GPS-like tracking of vectors used to deliver cell and gene therapies. iTAG integrates with virtually any living drug — T cells, NK cells, AAVs — to characterize cellular trafficking over time using PET imaging, giving researchers and clinicians a non-invasive whole-body window into living drugs.
+      - kind: talk
+        time: "9:45 – 10:15"
+        speaker: "George Dodge & Nick DePhillip"
+        affil: "Mechano Therapeutics"
+        topic: "Microfluidic encapsulation for musculoskeletal drugs"
+        bio: >-
+          Mechano Therapeutics specializes in microcapsule development using microfluidics to optimize drug performance. Spun out of Penn, the technology has the potential to revolutionize musculoskeletal health through novel encapsulation and release for pain, inflammation, infection and tissue degeneration.
+      - kind: talk
+        time: "10:15 – 10:45"
+        speaker: "Michael Poisel & Andreea Serban"
+        affil: "PhylloPharma"
+        topic: "Plant-based nanocarriers for oral delivery"
+        bio: >-
+          PhylloPharma, founded by Dr. Andreea Serban, develops novel treatments for metabolic diseases, specializing in oral drug delivery using plant-based nanocarriers.
+      - kind: talk
+        time: "10:45 – 11:15"
+        speaker: Saba Ghassemi
+        affil: "Penn"
+        topic: "Faster, more potent CAR-T"
+        bio: >-
+          Improves the effectiveness of CAR-T cell therapy through reduced ex vivo expansion time, novel manufacturing methods and a multidisciplinary engineering approach to create new tools and technologies for CAR-T.
+      - { kind: break, time: "11:15 – 12:00", label: "Lunch" }
+      - kind: talk
+        time: "12:00 – 12:30"
+        speaker: "Mark Kahn & John Welsh"
+        affil: "OsciFlex"
+        topic: "Medical device for venous thromboembolism"
+        bio: >-
+          OsciFlex, co-founded at Penn, is a medical device company tackling Venous Thromboembolism (VTE) — blood clots in the veins.
+      - kind: talk
+        time: "12:30 – 1:00"
+        speaker: "Jean Cho & David Mankoff"
+        affil: "Trevarx Biomedical"
+        topic: "Therapies for fibrotic disease"
+        bio: >-
+          Trevarx Biomedical is developing new therapies for fibrotic diseases — conditions where excessive scar tissue forms in organs and disrupts normal function.
+      - kind: talk
+        time: "1:00 – 1:30"
+        speaker: Sandhya Kortagere
+        affil: "Drexel"
+        topic: "Glutamate transporter activator for Parkinson's"
+        bio: >-
+          Research on a novel glutamate transporter activator as a disease modifying and symptomatic treatment for Parkinson's disease and other neurodegenerative diseases.
+
+  - year: 2022
+    tagline: Eighth annual gathering
+    supporters:
+      - { name: Franklin Park,  url: "https://www.franklinparkllc.com" }
+      - { name: Dakota Studio,  url: "https://www.dakota.com/team" }
+      - { name: Robert Morier,  url: "https://www.linkedin.com/in/robertlmorier" }
+    sessions:
+      - kind: talk
+        time: "9:15 – 9:45"
+        speaker: Thomas Kim
+        affil: "EpiVario"
+        topic: "Epigenetic therapeutics for memory disorders"
+        bio: >-
+          EpiVario, spun out of Penn's Epigenetics Institute, develops small-molecule therapeutics that target a newly discovered epigenetic mechanism involved in long-term memory, with applications across alcohol and drug use disorders and anxiety, starting with nicotine addiction.
+      - kind: talk
+        time: "9:45 – 10:15"
+        speaker: Justin Burrell
+        affil: "Penn"
+        topic: "Nerve coupler device for nerve fusion"
+        bio: >-
+          A nerve coupler device to improve nerve fusion efficacy, with breakthrough animal data showing delayed nerve fusion feasibility using exogenous axons following Wallerian degeneration.
+      - kind: talk
+        time: "10:15 – 10:30"
+        speaker: "Irene Rombel & Richard Braatz"
+        affil: "BioCurie"
+        topic: "AI for cell & gene therapy manufacturing"
+        bio: >-
+          Leveraging research from Dr. Braatz, BioCurie helps biopharma companies and manufacturers improve the time, quality and cost of cell & gene therapy production. Using AI, researchers can predict and optimize settings in real-time. Proof-of-concept modeling in AAV has more than doubled titer and improved quality with no increase in time or cost.
+      - kind: talk
+        time: "10:30 – 11:00"
+        speaker: Lahari Uppuluri
+        affil: "Drexel — Xiao Lab"
+        topic: "CRISPR-Cas9 workflows for structural variation detection"
+        bio: >-
+          Part of Prof. Ming Xiao's group at Drexel. Her lab develops a suite of CRISPR-Cas9-based chemical workflows for structural variation detection, de novo genome assembly, long-range haplotyping and genetic diagnostics. The methods integrate with PacBio and Oxford long-read sequencing and with optical mapping platforms.
+      - { kind: break, time: "11:00 – 12:00", label: "Lunch" }
+      - kind: talk
+        time: "12:00 – 12:30"
+        speaker: Rahul Kohli
+        affil: "ACE Genomics"
+        topic: "Reading the epigenome from cell-free DNA"
+        bio: >-
+          ACE Genomics discovers and engineers DNA-modifying enzymes for next-generation tools to read the epigenome — including the early diagnosis of cancer. Foundational technologies include novel enzyme variants and sequencing pipelines that permit non-destructive, highly specific decoding of epigenetic modifications from sparse cell-free DNA samples.
+      - kind: talk
+        time: "12:30 – 1:00"
+        speaker: Mark Yarmarkovich
+        affil: "CHOP"
+        topic: "Peptide-centric CARs for neuroblastoma"
+        bio: >-
+          Discovery and immunotherapeutic targeting of intracellular cancer drivers using peptide-centric chimeric antigen receptors (PC-CARs). PC-CARs target unmutated peptide derived from PHOX2B and recognize PHOX2B presented by other HLA types, breaking conventional HLA restriction and significantly expanding the addressable patient population. Demonstrated potent killing of neuroblastoma cells and complete tumor regression in mice.
+
+  - year: 2021
+    tagline: Seventh annual gathering
+    supporters:
+      - { name: Franklin Park,    url: "https://www.franklinparkllc.com" }
+      - { name: Science Center,   url: "https://sciencecenter.org/quorum" }
+      - { name: Eamon Gallagher,  url: "https://www.linkedin.com/in/eamongallagher" }
+    sessions:
+      - kind: talk
+        time: "9:55 – 10:15"
+        speaker: Ping Wang
+        affil: "Penn Pathology / Instanosis"
+        topic: "Point-of-care biomarker detection"
+        bio: >-
+          Professor of Pathology at Penn and founder of Instanosis. Her team developed a point-of-care diagnostic device for femtomolar biomarker detection using novel sensors, computer vision and smartphone imaging. Clinical data demonstrates high sensitivity and specificity, with broad applicability across pathogen detection, cancer, neurology and cardiovascular biomarkers.
+      - kind: talk
+        time: "10:20 – 10:40"
+        speaker: Armen Karamanian
+        affil: "Eliksa"
+        topic: "Amniotic stem-cell therapeutics"
+        bio: >-
+          CEO at Eliksa, leveraging IP from the University of Utah. The company uses amniotic stem/progenitor cells from donated C-sections for therapeutics in clinic, including dystrophic epidermolysis bullosa eye drops, chronic ocular GvHD and photorefractive keratectomy.
+      - kind: talk
+        time: "10:45 – 11:05"
+        speaker: Raghav Chari
+        affil: "Manzara Therapeutics"
+        topic: "AI for peptide therapeutics"
+        bio: >-
+          CEO of Manzara Therapeutics, a drug discovery platform based on the Complete Search (COBS) platform — tailor-designed AI for characterizing and optimizing biopolymer interactions for peptide therapeutics. Manzara explores the entire peptide sequence space with unprecedented efficiency, leveraging core algorithms developed by Dr. Herschel Rabitz at Princeton. Near-term pipeline considers the KISS1R GPCR target.
+      - kind: talk
+        time: "11:10 – 11:30"
+        speaker: Ben E. Black
+        affil: "Penn / Hysplex"
+        topic: "Engineered PARP1 for tunable DNA trapping"
+        bio: >-
+          Professor of Biochemistry & Biophysics at Penn and a scientific co-founder of Hysplex. His team's breakthroughs in PARP1 biology let Hysplex tune the balance between PARP-1 and DNA — generating DNA pro-trapping PARP1 to kill tumor cells in specific cancer patients and DNA anti-trapping PARP1 to restrain hyperactive PARP-1 in Parkinson's disease and preserve neurons.
+      - { kind: break, time: "11:30 – 12:15", label: "Break / Lunch" }
+      - kind: talk
+        time: "12:20 – 12:40"
+        speaker: César de la Fuente
+        affil: "Penn — Machine Biology Lab"
+        topic: "AI-discovered antimicrobials & low-cost diagnostics"
+        bio: >-
+          The Machine Biology Lab applies AI to discover antimicrobial molecules with unprecedented speed using novel genetic algorithms — an autonomous molecular discovery engine. The lab also develops biosensors derived from pencil graphite, dubbed LEAD (Low-cost Electrochemical Advanced Diagnostic) and COLOR (Covid-19 Low-cost Coronaviral diagnostic for Rapid testing).
+      - kind: talk
+        time: "12:45 – 1:05"
+        speaker: Eric Kmiec
+        affil: "ChristianaCare — Gene Editing Institute"
+        topic: "AAV gene-editing for chemo-resistant lung cancer"
+        bio: >-
+          Manages the Gene Editing Institute at ChristianaCare. Presented current standard-of-care in gene editing and near-term commercial projects from his lab including an AAV therapy targeting the NRF2-KEAP1 pathway for chemo-resistant lung cancer patients.
+      - kind: talk
+        time: "1:10 – 1:30"
+        speaker: Neil Inala
+        affil: "Nobias"
+        topic: "ML for pediatric drug discovery"
+        bio: >-
+          CEO of Nobias, a drug discovery platform with unique access to pediatric data from CHOP. Nobias applies data science and ML to time-intensive human processes for drug screening and development, factoring complex biological interactions.

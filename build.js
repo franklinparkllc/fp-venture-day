@@ -1,229 +1,460 @@
+#!/usr/bin/env node
+/*
+ * site-builder.js — render contents.yaml → static HTML for the Specimen Index page.
+ *
+ * Usage:
+ *   npm i js-yaml
+ *   node site-builder.js                           # writes ./dist/index.html
+ *   node site-builder.js contents.yaml out/page.html   # custom in / out paths
+ *
+ * The output is fully self-contained: all schedule markup is rendered at
+ * build time. A small inline <script> handles collapse/expand only — there
+ * is no client-side data dependency.
+ */
+
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-// Parse markdown with frontmatter
-function parseMarkdownWithFrontmatter(content) {
-  const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
-  const match = content.match(frontmatterRegex);
-  
-  if (!match) {
-    throw new Error('No frontmatter found in content.md');
-  }
-  
-  const frontmatter = yaml.load(match[1]);
-  const markdown = match[2];
-  
-  return { frontmatter, markdown };
+// ---------- args ----------
+const inPath  = process.argv[2] || 'contents.yaml';
+const outPath = process.argv[3] || 'index.html';
+
+// ---------- helpers ----------
+const pad2 = n => String(n).padStart(2, '0');
+const esc = s => String(s ?? '')
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+// `topic` and `headline` are allowed to contain a single inline <em>… for
+// emphasis. Escape everything else but pass <em>/</em> through.
+const escAllowEm = s => esc(s).replace(/&lt;(\/?)em&gt;/g, '<$1em>');
+
+// ---------- load ----------
+const raw = fs.readFileSync(inPath, 'utf8');
+const data = yaml.load(raw);
+
+// ---------- render fragments ----------
+function renderHostsStrip(hosts) {
+  return hosts.map(h =>
+    `<a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.name)}</a>`
+  ).join('\n    ');
 }
 
-// Parse sessions from markdown
-function parseSessions(markdown) {
-  const yearSections = markdown.split(/^##\s+(\d{4})\s*$/m);
-  const years = {};
-  
-  for (let i = 1; i < yearSections.length; i += 2) {
-    const year = yearSections[i];
-    const content = yearSections[i + 1];
-    
-    const sessions = [];
-    
-    // Split content into lines for easier parsing
-    const lines = content.split(/\r?\n/);
-    let currentSession = null;
-    
-    for (let j = 0; j < lines.length; j++) {
-      const line = lines[j];
-      
-      // Check for session time (### 8:30am – 8:45am)
-      if (line.match(/^###\s+.+$/)) {
-        // Save previous session if exists
-        if (currentSession) {
-          sessions.push(currentSession);
-        }
-        
-        // Start new session
-        const time = line.replace(/^###\s+/, '').trim();
-        currentSession = {
-          time: time,
-          speaker: null,
-          description: null,
-          isLunch: false
-        };
-      }
-      // Check for speaker name (**Speaker Name**)
-      else if (line.match(/^\*\*.*\*\*$/) && currentSession) {
-        currentSession.speaker = line.replace(/\*\*/g, '').trim();
-        
-        // Check if it's a lunch break
-        if (currentSession.speaker.includes('LUNCH') || currentSession.speaker.includes('BREAK')) {
-          currentSession.isLunch = true;
-        }
-      }
-      // Check for description (non-empty line after speaker)
-      else if (line.trim() && currentSession && !currentSession.description && !line.match(/^###/) && !line.match(/^\*\*.*\*\*$/)) {
-        // Look ahead to collect all description lines
-        let description = line.trim();
-        let k = j + 1;
-        
-        while (k < lines.length && lines[k].trim() && !lines[k].match(/^###/) && !lines[k].match(/^\*\*.*\*\*$/)) {
-          description += '\n' + lines[k].trim();
-          k++;
-        }
-        
-        currentSession.description = description;
-        j = k - 1; // Skip the lines we've already processed
-      }
-    }
-    
-    // Don't forget the last session
-    if (currentSession) {
-      sessions.push(currentSession);
-    }
-    
-    years[year] = sessions;
-  }
-  
-  return years;
+function renderYearLinks(years, currentYear) {
+  return years.map((y) =>
+    `<a href="#year-${y.year}"${y.year === currentYear ? ' class="current"' : ''}>${y.year}</a>`
+  ).join('');
 }
 
-// Generate HTML
-function generateHTML(frontmatter, sessions) {
-  return `<!DOCTYPE html>
+function renderSupporters(supporters) {
+  return supporters.map((s, i) =>
+    (i ? '<span class="sep">·</span>' : '') +
+    `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`
+  ).join('');
+}
+
+function renderSession(s, year, talkIdx) {
+  const yy = String(year).slice(2);
+
+  if (s.kind === 'break') {
+    return `      <div class="session break" data-open="false">
+        <div class="session-id">—</div>
+        <div class="session-time">${esc(s.time)}</div>
+        <div class="session-main"><h3 class="session-speaker">${esc(s.label)}</h3></div>
+        <div class="session-mark"></div>
+      </div>`;
+  }
+
+  if (s.kind === 'remarks') {
+    return `      <div class="session remarks" data-open="false">
+        <div class="session-id">VD-${yy}-00</div>
+        <div class="session-time">${esc(s.time)}</div>
+        <div class="session-main"><h3 class="session-speaker">${esc(s.speaker)}</h3></div>
+        <div class="session-affil"></div>
+        <div class="session-mark"></div>
+      </div>`;
+  }
+
+  // talk
+  const id = `VD-${yy}-${pad2(talkIdx)}`;
+  const topic = s.topic ? `<p class="session-topic">${escAllowEm(s.topic)}</p>` : '';
+  const bio = s.bio
+    ? `<div class="session-bio-wrap"><div class="session-bio-inner"><p class="session-bio">${esc(s.bio)}</p></div></div>`
+    : '';
+  return `      <div class="session talk" data-open="false">
+        <div class="session-id">${id}</div>
+        <div class="session-time">${esc(s.time)}</div>
+        <div class="session-main">
+          ${topic}
+          <h3 class="session-speaker">${esc(s.speaker)}</h3>
+          ${bio}
+        </div>
+        <div class="session-affil">${esc(s.affil || '')}</div>
+        <div class="session-mark">+</div>
+      </div>`;
+}
+
+function renderYear(y, currentYear) {
+  const isCurrent = y.year === currentYear;
+  const talkCount = y.sessions.filter(s => s.kind === 'talk').length;
+
+  let talkIdx = 0;
+  const sessionsHtml = y.sessions.map(s => {
+    if (s.kind === 'talk') talkIdx++;
+    return renderSession(s, y.year, talkIdx);
+  }).join('\n');
+
+  return `<section class="year" id="year-${y.year}" data-open="${isCurrent}" data-current="${isCurrent}">
+  <header class="year-head">
+    <div class="year-id">
+      <span class="num">${y.year}</span>
+      <span class="badge">${isCurrent ? 'Live' : 'Archived'}</span>
+    </div>
+    <div class="year-info">
+      <div class="tag">${esc(y.tagline)}</div>
+      <div class="supporters">
+        <span class="lbl">Hosts:</span>
+        ${renderSupporters(y.supporters)}
+      </div>
+    </div>
+    <div class="year-toggle">
+      <span class="count">${pad2(talkCount)} talks</span>
+      <span class="chev">+</span>
+    </div>
+  </header>
+  <div class="year-body"><div class="inner"><div class="session-list">
+${sessionsHtml}
+    </div></div></div>
+</section>`;
+}
+
+// ---------- styles (inline so output is one self-contained file) ----------
+const STYLES = `
+  :root {
+    --bg: #0d1014;
+    --paper: #161b22;
+    --ink: #e6e1d6;
+    --muted: #8b8a82;
+    --dim: #5a5d62;
+    --line: #232a34;
+    --line-soft: #1b212a;
+    --accent: oklch(0.85 0.18 95);
+    --accent-soft: oklch(0.78 0.16 95);
+    --serif: "IBM Plex Serif", Georgia, serif;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: var(--bg); }
+  a { color: inherit; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  .top {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 30;
+  }
+  .top-inner {
+    max-width: 1180px; margin: 0 auto;
+    padding: 12px 32px;
+    display: flex; align-items: center; gap: 24px;
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+  }
+  .top .brand { color: var(--ink); font-weight: 600; letter-spacing: 0.04em; }
+  .top .meta { margin-left: auto; display: flex; gap: 18px; }
+
+  .hero { padding: 64px 0 32px; }
+  .hero .label {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(48px, 6.5vw, 84px); line-height: 0.98;
+    letter-spacing: -0.025em; margin: 0;
+    text-wrap: balance; max-width: 18ch;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero .lede {
+    font-family: var(--serif); font-size: 19px; line-height: 1.5;
+    color: var(--muted); max-width: 56ch;
+    margin: 22px 0 0; text-wrap: balance;
+  }
+
+  .hosts-strip {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    display: flex; align-items: center; gap: 22px;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    margin-top: 40px;
+  }
+  .hosts-strip .lbl { color: var(--dim); text-transform: uppercase; letter-spacing: 0.18em; }
+  .hosts-strip .names { display: flex; flex-wrap: wrap; gap: 18px; flex: 1; font-size: 13px; }
+  .hosts-strip .names a {
+    text-decoration: none; color: var(--ink);
+    border: 1px solid var(--line); padding: 6px 12px;
+    background: var(--paper); transition: all .15s ease;
+  }
+  .hosts-strip .names a:hover { color: var(--accent); border-color: var(--accent); }
+
+  .yearnav-bar {
+    position: sticky; top: 49px; z-index: 25;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  .yearnav-inner {
+    max-width: 1180px; margin: 0 auto;
+    padding: 10px 32px;
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+  }
+  .yearnav-inner .lbl { color: var(--dim); text-transform: uppercase; letter-spacing: 0.18em; }
+  .yearnav-inner .links { display: flex; margin-left: auto; gap: 0; }
+  .yearnav-inner .links a {
+    text-decoration: none; padding: 6px 12px;
+    color: var(--muted); border: 1px solid var(--line); border-right: none;
+    transition: all .15s ease; font-size: 12px;
+  }
+  .yearnav-inner .links a:last-child { border-right: 1px solid var(--line); }
+  .yearnav-inner .links a:hover { color: var(--ink); background: var(--paper); }
+  .yearnav-inner .links a.current { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+
+  .archive { padding: 28px 0 96px; }
+  .year { border-top: 1px solid var(--line); scroll-margin-top: 100px; }
+
+  .year-head {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    gap: 24px; padding: 28px 0;
+    align-items: baseline; cursor: pointer; user-select: none;
+    transition: padding .15s ease;
+  }
+  .year-head:hover .year-toggle .chev { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .year-id { display: flex; align-items: baseline; gap: 12px; }
+  .year-id .num {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 56px; line-height: 0.9; letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .year[data-current="true"] .year-id .num { color: var(--accent); }
+  .year-id .badge {
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--muted); border: 1px solid var(--line);
+    padding: 3px 8px; align-self: end; margin-bottom: 8px;
+  }
+  .year[data-current="true"] .year-id .badge { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+
+  .year-info { font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .year-info .tag {
+    font-family: var(--serif); font-style: italic;
+    font-size: 16px; letter-spacing: 0;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .year-info .supporters { display: inline-flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+  .year-info .supporters .lbl { color: var(--dim); text-transform: uppercase; letter-spacing: 0.18em; }
+  .year-info .supporters a {
+    text-decoration: none; color: var(--ink);
+    border-bottom: 1px solid var(--line); padding-bottom: 1px;
+  }
+  .year-info .supporters a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .year-info .supporters .sep { color: var(--dim); }
+
+  .year-toggle {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted);
+  }
+  .year-toggle .count { color: var(--ink); }
+  .year-toggle .chev {
+    width: 30px; height: 30px;
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    color: var(--ink); font-family: var(--mono);
+    transition: transform .25s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .year[data-open="true"] .year-toggle .chev { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+  .year-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+  .year[data-open="true"] .year-body { grid-template-rows: 1fr; }
+  .year-body > .inner { overflow: hidden; }
+
+  .session-list { padding-bottom: 24px; }
+  .session {
+    display: grid;
+    grid-template-columns: 80px 110px 1fr 220px 30px;
+    gap: 20px; padding: 16px 0;
+    border-top: 1px solid var(--line-soft);
+    align-items: baseline; cursor: pointer;
+  }
+  .session:first-child { border-top: 1px solid var(--line); }
+  .session-id { font-family: var(--mono); font-size: 11px; color: var(--accent); align-self: start; padding-top: 4px; }
+  .session-time { font-family: var(--mono); font-size: 13px; color: var(--ink); align-self: start; padding-top: 3px; }
+  .session-main { min-width: 0; }
+  .session-topic {
+    font-family: var(--serif); font-style: italic;
+    font-size: 16px; color: var(--accent);
+    margin: 0 0 4px; line-height: 1.3;
+  }
+  .session-speaker {
+    font-family: var(--sans); font-size: 19px; font-weight: 500;
+    margin: 0; color: var(--ink); letter-spacing: -0.005em;
+  }
+  .session-affil {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    text-align: right; line-height: 1.45; align-self: start; padding-top: 6px;
+  }
+  .session-mark {
+    font-family: var(--mono); text-align: center;
+    color: var(--muted); align-self: start; padding-top: 4px;
+    transition: color .15s ease, transform .25s ease;
+  }
+  .session:hover .session-mark { color: var(--accent); }
+  .session[data-open="true"] .session-mark { color: var(--accent); transform: rotate(45deg); }
+
+  .session-bio-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+  .session[data-open="true"] .session-bio-wrap { grid-template-rows: 1fr; }
+  .session-bio-inner { overflow: hidden; }
+  .session-bio {
+    padding: 10px 0 4px;
+    font-family: var(--serif); font-size: 16px; line-height: 1.6;
+    color: var(--muted); margin: 0; max-width: 70ch;
+    border-left: 2px solid var(--accent); padding-left: 16px;
+  }
+
+  .session.break {
+    grid-template-columns: 80px 110px 1fr 30px;
+    cursor: default; padding: 10px 0;
+  }
+  .session.break .session-id { color: var(--dim); }
+  .session.break .session-speaker {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.24em; color: var(--muted);
+  }
+  .session.break .session-mark { display: none; }
+  .session.remarks { cursor: default; }
+  .session.remarks .session-mark { visibility: hidden; }
+
+  footer {
+    border-top: 1px solid var(--ink);
+    padding: 28px 32px;
+    max-width: 1180px; margin: 0 auto;
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+  }
+  footer .colophon {
+    font-family: var(--serif); font-style: italic;
+    font-size: 15px; color: var(--ink); max-width: 56ch;
+  }
+
+  @media (max-width: 800px) {
+    .year-head { grid-template-columns: 1fr; gap: 12px; }
+    .session { grid-template-columns: 60px 90px 1fr 26px; gap: 12px; }
+    .session-affil { display: none; }
+  }`;
+
+// ---------- inline behaviour script (no data dependency) ----------
+const RUNTIME = `
+  // Year nav: highlight on click
+  const links = document.querySelectorAll('#year-links a');
+  links.forEach(a => a.addEventListener('click', () => {
+    links.forEach(x => x.classList.remove('current'));
+    a.classList.add('current');
+  }));
+  // Year accordion
+  document.querySelectorAll('.year').forEach(y => {
+    y.querySelector('.year-head').addEventListener('click', () => {
+      y.dataset.open = y.dataset.open === 'true' ? 'false' : 'true';
+    });
+  });
+  // Session accordion (talks only)
+  document.querySelectorAll('.session.talk').forEach(s => {
+    s.addEventListener('click', () => {
+      s.dataset.open = s.dataset.open === 'true' ? 'false' : 'true';
+    });
+  });`;
+
+// ---------- assemble ----------
+const { site, hosts, years } = data;
+
+const html = `<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Venture Day Archives - Innovation in Biotechnology</title>
-    <meta name="description" content="Explore the annual Venture Day Archives showcasing groundbreaking biotechnology presentations from leading researchers and entrepreneurs.">
-    <meta name="keywords" content="venture day, biotechnology, innovation, research, presentations, archives">
-    <!-- Version ${frontmatter.version} - ${frontmatter.last_updated} -->
-    
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" href="favicon.ico">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
-    
-    <!-- Microsoft Clarity Analytics -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "u1k88oidlw");
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(site.title)}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>${STYLES}
+</style>
 </head>
 <body>
-    <main class="container" role="main">
-        <header class="header" role="banner">
-            <div class="version" aria-label="Version">v${frontmatter.version}</div>
-            <h1>Venture Day Archives</h1>
-        </header>
-        
-        <section class="content" role="main">
-            ${Object.keys(sessions).sort((a, b) => b - a).map(year => generateYearSection(year, sessions[year], frontmatter.years[year], frontmatter.default_year)).join('\n')}
-        </section>
-    </main>
 
-    <script src="script.js"></script>
+<div class="top">
+  <div class="top-inner">
+    <span class="brand">${esc(site.brand)}</span>
+    <span>${esc(site.version)} · ${site.current_year}</span>
+    <div class="meta">
+      <span>updated ${esc(site.updated)}</span>
+      <span>${esc(site.city)}</span>
+    </div>
+  </div>
+</div>
+
+<header class="wrap hero">
+  <div class="label">${esc(site.hero.label)}</div>
+  <h1>${escAllowEm(site.hero.headline)}</h1>
+  <p class="lede">${escAllowEm(site.hero.lede)}</p>
+</header>
+
+<section class="wrap hosts-strip" id="hosts">
+  <span class="lbl">Hosted by ${site.current_year} →</span>
+  <div class="names">
+    ${renderHostsStrip(hosts)}
+  </div>
+</section>
+
+<div class="yearnav-bar" id="archives">
+  <div class="yearnav-inner">
+    <span class="lbl">Index ·</span>
+    <div class="links" id="year-links">${renderYearLinks(years, site.current_year)}</div>
+  </div>
+</div>
+
+<main class="wrap archive" id="archive">
+${years.map(y => renderYear(y, site.current_year)).join('\n\n')}
+</main>
+
+<footer>
+  <p class="colophon">${esc(site.colophon)}</p>
+  <span>${esc(site.year_range)}</span>
+</footer>
+
+<script>
+${RUNTIME}
+</script>
 </body>
-</html>`;
-}
+</html>
+`;
 
-// Generate year section HTML
-function generateYearSection(year, sessions, yearMeta, defaultYear) {
-  const supporters = yearMeta?.supporters || [];
-  const isDefault = defaultYear && String(year) === String(defaultYear);
-  
-  return `
-            <article class="year-section" data-year="${year}" ${isDefault ? 'data-default="true"' : ''}>
-                <header class="year-header${isDefault ? ' active' : ''}" onclick="toggleYear(this)" role="button" tabindex="0" aria-expanded="${isDefault ? 'true' : 'false'}" aria-controls="year-${year}-content">
-                    <div class="year-header-left">
-                        <h2 class="year-title">${year}</h2>
-                        ${supporters.length > 0 ? `
-                        <div class="year-supporters" role="list" aria-label="Event supporters">
-                            ${supporters.map(supporter => 
-                              `<a href="${supporter.url}" target="_blank" class="year-supporter-link" role="listitem" aria-label="Visit ${supporter.name}">${supporter.name}</a>`
-                            ).join('\n                            ')}
-                        </div>
-                        ` : ''}
-                    </div>
-                    <span class="arrow" aria-hidden="true">▶</span>
-                </header>
-                <div class="year-content ${isDefault ? 'active' : ''}" id="year-${year}-content" role="region" aria-labelledby="year-${year}-title">
-                    <div class="year-inner">
-                        ${sessions.map(session => generateSessionHTML(session)).join('\n                        ')}
-                    </div>
-                </div>
-            </article>`;
-}
+// ---------- write ----------
+fs.mkdirSync(path.dirname(outPath), { recursive: true });
+fs.writeFileSync(outPath, html, 'utf8');
 
-// Generate session HTML
-function generateSessionHTML(session) {
-  if (session.isLunch) {
-    return `<div class="lunch" role="note" aria-label="Break period">
-                <time datetime="${session.time}">${session.time}</time>
-                <span>${session.speaker}</span>
-            </div>`;
-  }
-  
-  return `
-                        <article class="session" role="article">
-                            <header class="session-header">
-                                <time class="session-time" datetime="${session.time}">${session.time}</time>
-                                <h3 class="session-speaker">${session.speaker}</h3>
-                            </header>
-                            ${session.description ? `<div class="session-description">${session.description}</div>` : ''}
-                        </article>`;
-}
-
-// Main build function
-function build() {
-  try {
-    console.log('Building Venture Day Archives...');
-    
-    // Read content.md
-    const content = fs.readFileSync('content.md', 'utf8');
-    const { frontmatter, markdown } = parseMarkdownWithFrontmatter(content);
-    
-    // Parse sessions
-    const sessions = parseSessions(markdown);
-    
-    // Generate HTML
-    const html = generateHTML(frontmatter, sessions);
-    
-    // Write index.html
-    fs.writeFileSync('index.html', html);
-    
-    console.log(`✅ Built successfully! Version ${frontmatter.version}`);
-    console.log(`📅 Years: ${Object.keys(sessions).sort((a, b) => b - a).join(', ')}`);
-    console.log(`📄 Generated: index.html`);
-    
-  } catch (error) {
-    console.error('❌ Build failed:', error.message);
-    process.exit(1);
-  }
-}
-
-// Run build if called directly
-if (require.main === module) {
-  build();
-}
-
-module.exports = {
-  parseMarkdownWithFrontmatter,
-  parseSessions,
-  generateHTML,
-  build
-};
+const talkTotal = years.reduce((n, y) => n + y.sessions.filter(s => s.kind === 'talk').length, 0);
+console.log(`✓ wrote ${outPath}`);
+console.log(`  ${years.length} years · ${talkTotal} talks · ${(html.length / 1024).toFixed(1)} kB`);

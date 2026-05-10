@@ -1,6 +1,6 @@
-# Venture Day Archives
+# Venture Day — Specimen Index
 
-A clean, modern website showcasing the Venture Day speaker archives from since 2021. Built with a custom Node.js build system that converts Markdown content to a fast-loading, static site optimized for GitHub Pages.
+A clean, modern archive of biotech presentations from Venture Day (2021–2026). Built with a lightweight Node.js static site generator that converts structured YAML to a fully self-contained HTML page optimized for GitHub Pages.
 
 ## 🚀 Live Site
 
@@ -8,254 +8,313 @@ Visit: [https://rncdev.github.io/fp-venture-day/](https://rncdev.github.io/fp-ve
 
 ## 📋 Features
 
-- **Clean Design**: Modern, professional interface with subtle animations
-- **Responsive**: Works perfectly on desktop, tablet, and mobile devices
-- **Fast Loading**: Optimized static HTML with minimal CSS
-- **Collapsible Years**: Easy navigation through different event years
-- **Supporter Integration**: Dynamic supporter links per year
-- **Version Tracking**: Built-in version numbering for easy updates
-- **Analytics**: Microsoft Clarity integration for user behavior insights
+- **Single-File Output**: Fully self-contained HTML with inline CSS + JavaScript (no external dependencies)
+- **Responsive Design**: Mobile-optimized with CSS Grid and media queries
+- **Dark Theme**: Modern dark UI with accent colors and smooth transitions
+- **Collapsible Archive**: Toggle years and expand talk bios with smooth animations
+- **Fast Loading**: 52.8 kB total (compressed further by browser)
+- **YAML-Based Content**: Easy-to-edit structured data format
+- **IBM Plex Typography**: Professional fonts from Google Fonts
+- **Navigation**: Sticky header with year links, scroll anchors
 
 ## 🎨 Design
 
-- **Color Scheme**: Dark blue header with light gray background
-- **Typography**: Clean, readable fonts with proper hierarchy
-- **Layout**: Card-based design with hover effects
-- **Time Styling**: Dark orange time slots for easy scanning
+- **Color Scheme**: Dark background (`#0d1014`) with light text, accent gold
+- **Typography**: IBM Plex Sans/Serif/Mono for professional appearance
+- **Layout**: CSS Grid for responsive multi-column layout
+- **Interactions**: Smooth collapse/expand using CSS `grid-template-rows` transitions
+- **Mobile**: Single-column stacked layout below 800px
 
 ## 📁 Project Structure
 
 ```
 fp-venture-day/
-├── content.md             # Source content with YAML frontmatter
-├── build.js               # Build script
-├── styles.css             # External CSS
-├── script.js              # External JavaScript
-├── index.html             # Generated output
-├── package.json           # Node.js dependencies
-└── README.md              # This file
+├── contents.yaml           # Source of truth (structured YAML)
+├── build.js                # Build script (reads YAML → HTML)
+├── index.html              # Generated output (fully self-contained)
+├── package.json            # Node.js dependencies
+├── styles.css              # External CSS (optional, not used currently)
+├── script.js               # External JS (optional, not used currently)
+└── README.md               # This file
 ```
 
 ## 🔧 Development Workflow
 
-### 1. Installation
-First, install the necessary Node.js dependencies:
+### Installation
+
 ```bash
 npm install
 ```
 
-### 2. Local Development
-To make changes, use the watch script:
-```bash
-npm run watch
-```
-This command automatically rebuilds `index.html` every time you save a change to `content.md`. You can open the `index.html` file directly in your browser to see your updates.
+This installs `js-yaml` (required for YAML parsing) and `nodemon` (optional, for watching).
 
-For a live-reloading server, run this command in a separate terminal:
-```bash
-npm run dev
-```
+### Build Commands
 
-### 3. Making Changes
+- **`npm run build`** — Build `index.html` once from `contents.yaml`
+- **`npm run dev`** — Build and serve locally on `http://localhost:8000`
+- **`npm run watch`** — Watch `contents.yaml` for changes and auto-rebuild
 
-#### Content Changes
-All content is managed in `content.md`. This file uses YAML frontmatter for metadata (like version and supporters) and Markdown for the session content. See the `Adding Content` section below for formatting details.
+### Making Changes
+
+#### Content Updates (Speakers, Years, Bios)
+
+1. **Edit `contents.yaml`** — Add/update speaker data, supporters, topics, bios
+2. **Run build** — `npm run build`
+3. **Test** — Open `index.html` in browser, verify layout and content
+4. **Commit & push**:
+   ```bash
+   git add contents.yaml index.html
+   git commit -m "Update: [brief description]"
+   git push
+   ```
 
 #### UI/Design Changes
-**Important**: The approach depends on what you want to change:
 
-- **CSS-only changes** (styling, colors, spacing): Edit `styles.css` directly - no build needed
-- **HTML structure or JavaScript changes**: Edit `build.js` file, then run `npm run build`
+The new build system generates **fully self-contained HTML** (all CSS + JS inline). To modify:
 
-The `styles.css` file is static and can be edited directly. The `script.js` file is generated by the build process, so any manual changes to it will be overwritten.
-
-For UI modifications:
-1. **CSS changes**: Edit `styles.css` directly
-2. **HTML/JS changes**: Edit `build.js`, then run `npm run build`
-3. Test your changes by opening `index.html` in a browser
-
-## 🚀 Deployment Workflow
-
-When you're ready to publish your changes:
-
-1.  **Stop the Watcher**: Press `Ctrl+C` in the terminal where `npm run watch` is running.
-2.  **Final Build**: It's good practice to run `npm run build` one last time manually to ensure you have the final version.
-3.  **Commit and Push**: You **must** commit both the source file (`content.md`) and the generated output file (`index.html`) for your changes to appear on the live site.
-
-    ```bash
-    # Add both the content you changed and the resulting html file
-    git add content.md index.html
-
-    # Commit the changes
-    git commit -m "Update speaker list for 2025"
-
-    # Push to GitHub to deploy
-    git push
-    ```
-GitHub Pages will automatically serve the updated content.
-
-## 🤖 AI Assistant Workflow
-
-When working with an AI assistant to modify this project, follow this workflow:
-
-### After Content Changes
-1. **Make changes** to `content.md` (speakers, sessions, supporters, etc.)
-2. **Run build command**: `npm run build` to regenerate the website
-3. **Review changes**: Open `index.html` to verify the updates
-4. **Commit and push**:
+1. **Edit `build.js`** — Change HTML structure, CSS styles, or JavaScript behavior
+2. **Run build** — `npm run build` to regenerate `index.html`
+3. **Test** — Open `index.html` in browser
+4. **Commit & push**:
    ```bash
-   git add content.md index.html
-   git commit -m "Update content: [brief description of changes]"
+   git add build.js index.html
+   git commit -m "UI: [brief description]"
    git push
    ```
 
-### After UI/Design Changes
-1. **Make changes** to the appropriate file(s):
-   - **CSS-only changes**: Edit `styles.css` directly
-   - **HTML structure/JavaScript changes**: Edit `build.js`
-2. **Run build command**: `npm run build` to regenerate output files (if `build.js` was modified)
-3. **Review changes**: Open `index.html` to verify the updates
-4. **Commit and push**:
-   ```bash
-   # For CSS-only changes:
-   git add styles.css
-   git commit -m "Update UI: [brief description of changes]"
-   git push
-   
-   # For build.js changes:
-   git add build.js index.html styles.css script.js
-   git commit -m "Update UI: [brief description of changes]"
-   git push
-   ```
+Note: `styles.css` and `script.js` in the repo are not used by the new build; they're kept for reference only.
 
-### AI Commit Message Guidelines
-- Be specific about what was changed
-- Include the type of change (content vs UI)
-- Examples:
-  - "Add 2025 speaker lineup and supporters"
-  - "Update styling for mobile responsiveness"
-  - "Fix supporter link formatting for 2024"
+## 📝 Content Format (contents.yaml)
 
-## 📝 Adding Content
+### File Structure
 
-#### New Year
-1. Add year to YAML frontmatter in `content.md`:
-   ```yaml
-   years:
-     2026:
-       supporters:
-         - name: "New Supporter"
-           url: "https://example.com"
-   ```
+```yaml
+site:
+  title: "Venture Day — Specimen Index"
+  brand: "VENTURE.DAY"
+  version: "v12"
+  current_year: 2026
+  updated: "05.09.2026"
+  city: "philadelphia"
+  hero:
+    label: "Catalog · Twelfth annual gathering"
+    headline: "Specimen index of <em>unreleased</em> biotech."
+    lede: "A working catalog of every talk given at Venture Day..."
+  colophon: "A catalog of unreleased biotech presented at Venture Day."
+  year_range: "2014 — 2026"
 
-2. Add year section to Markdown:
-   ```markdown
-   ## 2026
-   
-   ### 9:00am – 9:30am
-   **New Speaker**
-   
-   Speaker description...
-   ```
+hosts:
+  - name: Franklin Park
+    url: https://www.franklinparkllc.com/
 
-#### New Sessions
-Use consistent Markdown format:
-```markdown
-### 9:00am – 9:30am
-**Speaker Name**
-
-Speaker description or presentation details.
+years:
+  - year: 2026
+    tagline: "Twelfth annual gathering"
+    supporters:
+      - { name: Franklin Park, url: "https://..." }
+    sessions:
+      - { kind: remarks, time: "9:15 – 9:30", speaker: "Opening Remarks" }
+      - kind: talk
+        time: "9:30 – 9:50"
+        speaker: Name
+        affil: "Institution"
+        topic: "Short title"
+        bio: >-
+          Full biography paragraph...
+      - { kind: break, time: "11:40 – 1:00", label: "Lunch" }
 ```
 
-For lunch breaks:
-```markdown
-### 12:00pm – 1:00pm
-**LUNCH**
-```
+### Session Types
 
-#### New Supporters
-Edit the `supporters` array in YAML frontmatter:
+- **`remarks`** — Opening/closing remarks (no bio, no affiliation)
+- **`talk`** — Speaker session (includes speaker, affiliation, topic, bio)
+- **`break`** — Lunch/break block (just label and time)
+
+### Adding a New Year
+
 ```yaml
 years:
-  2025:
+  - year: 2027
+    tagline: "Thirteenth annual gathering"
     supporters:
-      - name: "Company Name"
-        url: "https://company-website.com"
+      - { name: "Company", url: "https://example.com" }
+    sessions:
+      - { kind: remarks, time: "9:00 – 9:15", speaker: "Opening" }
+      - kind: talk
+        time: "9:15 – 9:45"
+        speaker: "Jane Doe"
+        affil: "MIT"
+        topic: "Gene therapy advances"
+        bio: "Jane is a professor..."
 ```
 
-## 🛠️ Build System
+### Adding a New Speaker
 
-### Commands
+1. Find the year in `contents.yaml`
+2. Add a new entry to `sessions`:
+   ```yaml
+   - kind: talk
+     time: "10:00 – 10:30"
+     speaker: "Name"
+     affil: "Institution"
+     topic: "Research topic"
+     bio: "Bio paragraph..."
+   ```
+3. Run `npm run build`
+4. Test and commit
 
-- `npm run build` - Build the site once
-- `npm run dev` - Build and serve locally
-- `npm run watch` - Watch for changes and rebuild
+## 🛠️ Build System Details
 
 ### How It Works
 
-1. **Parse YAML Frontmatter** - Extract version, supporters, and year metadata
-2. **Parse Markdown Content** - Convert sessions and speaker information to structured data
-3. **Generate HTML** - Create responsive HTML with collapsible year sections
-4. **Output Files** - Write `index.html`, `styles.css`, and `script.js`
+1. **Read `contents.yaml`** using `js-yaml`
+2. **Generate HTML** with:
+   - Inline CSS (all styles, variables, responsive queries)
+   - Inline JavaScript (accordion toggle logic)
+   - Structured content from YAML
+3. **Write `index.html`** (fully self-contained, ready to serve)
 
-### Key Features
+### Output Properties
 
-- **Automatic supporter links** - Generated from YAML frontmatter per year
-- **Responsive design** - Mobile-friendly collapsible interface
-- **Version management** - Automatic version display in header
-- **Session parsing** - Handles regular sessions and lunch breaks
-- **Clean separation** - CSS and JS in external files
+- **File size**: ~52.8 kB (single HTML file, no external deps)
+- **Runtime deps**: None (inline JS uses vanilla DOM APIs)
+- **Hosting**: GitHub Pages (static file serving)
+- **Fonts**: Google Fonts CDN (preconnected, optimized)
 
-## 🛠️ Technical Details
+### Session ID Generation
 
-- **Build System**: Custom Node.js with js-yaml
-- **Framework**: Pure HTML/CSS/JavaScript
-- **Hosting**: GitHub Pages
-- **Cache Control**: Optimized headers to prevent caching issues
-- **Mobile First**: Responsive design with mobile optimization
-- **Performance**: Minimal dependencies, fast loading
-- **Analytics**: Microsoft Clarity for user behavior tracking and insights
+Sessions get IDs based on year and talk number:
+- `VD-26-01` = Venture Day, 2026, Talk #1
+- `VD-26-00` = Remarks (always #00)
+- Breaks/lunches don't have IDs
+
+## 🚀 Deployment
+
+The build outputs a single `index.html` file ready for GitHub Pages.
+
+```bash
+# Build locally
+npm run build
+
+# Commit both source and output
+git add contents.yaml index.html build.js
+git commit -m "Update: [description]"
+
+# Push to GitHub
+git push
+```
+
+GitHub Actions (if configured) or GitHub Pages will serve `index.html` automatically.
 
 ## 📱 Browser Support
 
 - Chrome/Edge (latest)
 - Firefox (latest)
 - Safari (latest)
-- Mobile browsers
+- Mobile browsers (iOS Safari, Chrome Android)
 
-## 🔧 Development
+Requires support for:
+- CSS Grid
+- CSS custom properties (variables)
+- CSS `grid-template-rows` transitions
+- ES6 JavaScript (arrow functions, const/let)
 
-### Prerequisites
-- Node.js 18+ (LTS recommended)
-- Git and GitHub repository access
+## 🔧 Prerequisites
 
-### Local Development
+- **Node.js 18+** (LTS recommended)
+- **npm** (comes with Node.js)
+- **Git** (for version control)
+
+## 📝 Workflow Examples
+
+### Update a Speaker Bio
+
 ```bash
-# Clone the repository
-git clone https://github.com/rncdev/fp-venture-day.git
-cd fp-venture-day
-
-# Install dependencies
-npm install
-
-# Build the site
+# 1. Edit contents.yaml
+# 2. Build
 npm run build
 
-# Serve locally
-npm run dev
+# 3. Open index.html and verify
+# 4. Commit
+git add contents.yaml index.html
+git commit -m "Update: Noor Momin bio"
+git push
 ```
 
-### Troubleshooting
+### Add a New Year
 
-- **Build Issues**: Check YAML syntax in frontmatter and Markdown formatting
-- **Deployment Issues**: Check your local build and ensure `index.html` is committed.
-- **Content Issues**: Validate supporter URLs and speaker name formatting
-- **Analytics Issues**: See `CLARITY_SETUP.md` for Microsoft Clarity setup and troubleshooting
+```bash
+# 1. Add year block to contents.yaml
+# 2. Update site.current_year if needed
+# 3. Build
+npm run build
 
-## 📞 Contact
+# 4. Verify in browser
+# 5. Commit
+git add contents.yaml index.html
+git commit -m "Add: 2027 speaker lineup"
+git push
+```
 
-For questions or updates, contact the development team.
+### Change UI Styling
+
+```bash
+# 1. Edit build.js (modify the STYLES constant)
+# 2. Build
+npm run build
+
+# 3. Test in browser
+# 4. Commit
+git add build.js index.html
+git commit -m "UI: Update color scheme"
+git push
+```
+
+## 🛠️ Technical Stack
+
+- **Language**: JavaScript (Node.js)
+- **YAML Parser**: `js-yaml`
+- **File Watcher**: `nodemon` (optional)
+- **CSS**: Modern (CSS Grid, custom properties, media queries)
+- **JavaScript**: Vanilla (no frameworks)
+- **Fonts**: IBM Plex (Google Fonts)
+- **Hosting**: GitHub Pages
+
+## 📊 Statistics
+
+- **Years**: 6 (2021–2026)
+- **Talks**: 39 (varies by year)
+- **File size**: ~52.8 kB (single HTML)
+- **Build time**: <100ms
+
+## 🐛 Troubleshooting
+
+### Build fails with "Module not found: js-yaml"
+```bash
+npm install
+```
+
+### Changes don't appear after build
+- Verify `contents.yaml` is valid YAML (check syntax)
+- Clear browser cache or do a hard refresh (Cmd+Shift+R)
+- Ensure you ran `npm run build`
+
+### Layout looks wrong on mobile
+- Check browser DevTools (Cmd+Option+I)
+- Verify viewport meta tag is present (it's in build.js)
+- Test in an actual mobile device or mobile emulator
+
+### Specific session not appearing
+- Check `contents.yaml` for YAML syntax errors
+- Verify the session is nested under the correct year
+- Ensure all required fields are present (time, speaker, etc.)
+
+## 📄 License
+
+[Add license info if applicable]
 
 ---
 
-*Built with ❤️ for Venture Day*
+**Built with ❤️ for Venture Day**
+
+Last updated: May 2026
