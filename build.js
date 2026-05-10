@@ -141,8 +141,8 @@ const STYLES = `
     --dim: #5a5d62;
     --line: #232a34;
     --line-soft: #1b212a;
-    --accent: oklch(0.72 0.20 35);
-    --accent-soft: oklch(0.66 0.18 35);
+    --accent: oklch(0.68 0.13 40);
+    --accent-soft: oklch(0.62 0.11 40);
     --serif: "IBM Plex Serif", Georgia, serif;
     --sans: "IBM Plex Sans", system-ui, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
