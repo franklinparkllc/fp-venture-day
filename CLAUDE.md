@@ -37,7 +37,7 @@ Standard content update flow:
 - `contents.yaml` — all content
 - `build.js` — the entire generator
 - `.github/workflows/deploy.yml` — CI build + Pages deploy
-- `package.json` — `version` field is the package version; site version lives separately at `contents.yaml: site.version`
+- `package.json` — declares the `js-yaml` dependency and the `build` script (no `version` field; the site's version lives at `contents.yaml: site.version`)
 
 ## Things to Avoid
 

@@ -53,7 +53,7 @@ Three top-level keys: `site`, `hosts`, `years`.
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12"               # bump this when content changes
+  version: "v13"               # bump this when content changes
   current_year: 2026
   updated: "05.09.2026"
   hero:
