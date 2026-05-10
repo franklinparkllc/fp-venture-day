@@ -6,7 +6,7 @@
     "scripts": {
         "build": "node build.js",
         "dev": "node build.js && python -m http.server 8000",
-        "watch": "nodemon --watch content.md --exec \"node build.js\"",
+        "watch": "nodemon --watch contents.yaml --exec \"node build.js\"",
         "serve": "python -m http.server 8000"
     },
     "keywords": [
@@ -18,8 +18,10 @@
     ],
     "author": "",
     "license": "MIT",
+    "dependencies": {
+        "js-yaml": "^4.1.0"
+    },
     "devDependencies": {
-        "js-yaml": "^4.1.0",
         "nodemon": "^3.0.1"
     }
 }
