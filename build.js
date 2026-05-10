@@ -194,7 +194,7 @@ const STYLES = `
   .hero .cta {
     display: inline-flex; align-items: center; gap: 12px;
     margin-top: 28px;
-    padding: 11px 18px;
+    padding: 12px 22px;
     font-family: var(--mono); font-size: 12px;
     letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--accent);
@@ -364,7 +364,7 @@ const STYLES = `
   .session.remarks .session-mark { visibility: hidden; }
 
   footer {
-    border-top: 1px solid var(--ink);
+    border-top: 1px solid var(--line);
     padding: 28px 32px;
     max-width: 1180px; margin: 0 auto;
     display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
@@ -446,7 +446,7 @@ const html = `<!doctype html>
 
 <div class="yearnav-bar" id="archives">
   <div class="yearnav-inner">
-    <span class="lbl">Index ·</span>
+    <span class="lbl">Index</span>
     <div class="links" id="year-links">${renderYearLinks(years, site.current_year)}</div>
   </div>
 </div>
