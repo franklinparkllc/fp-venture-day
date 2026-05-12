@@ -5,9 +5,9 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.4"
+  version: "v12.5"
   current_year: 2026
-  updated: "05.10.2026"
+  updated: "05.12.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -43,7 +43,13 @@ years:
         topic: "Immunoengineering for cardiovascular disease"
         bio: >-
           Noor Momin is an Assistant Professor in the Department of Bioengineering at the University of Pennsylvania. Her laboratory studies the role of the immune system in cardiovascular diseases. Specifically, they leverage their expertise in protein engineering, pharmacokinetic modeling and cardio-immunology to design precision therapeutics for heart failure, fibrosis, and arrhythmia. Most recently, her lab engineered a nascent extracellular matrix-targeted cytokine therapy that boosts cardiac repair after a myocardial infarction. This novel targeted immunotherapy offers an approach distinct from current interventions to prevent heart failure after myocardial infarction. Dr. Momin received her PhD in Bioengineering from the University of Pennsylvania and completed postdoctoral training at the University of California, San Francisco. She is a recipient of the NIH Pathway to Independence Award, the American Heart Association Career Development Award, and the American Society of Gene & Cell Therapy New Investigator Award.
-      - { kind: talk, time: "9:50 – 10:10",  speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - kind: talk
+        time: "9:50 – 10:10"
+        speaker: Tyler Daniel
+        affil: "Univ. of Pennsylvania — Chemical & Biomolecular Engineering"
+        topic: "Next-generation genome engineering platforms"
+        bio: >-
+          Tyler Daniel is a senior PhD candidate in Chemical and Biomolecular Engineering and an NIH NAM T32 Fellow at the University of Pennsylvania's Center for Precision Engineering for Health. As a researcher in Dr. Xue Gao's lab, Tyler develops scalable next-generation genome engineering platforms that overcome critical safety bottlenecks and limitations of traditional DNA editing tools. He engineered novel DNA base editors that reduce off-target "bystander" mutations by over 80% and are applicable in a wider range of genomic contexts. In a powerful preclinical proof-of-concept, these tools successfully corrected Cystic Fibrosis-causing mutations, substantially improving CFTR protein function. Additionally, Tyler pioneered mvGPT, a modular "all-in-one" platform technology that enables simultaneous and independent gene editing, activation, and repression within a single system. Combining rational protein design with high-throughput validation, Tyler's research, recently published in Molecular Therapy and Nature Communications, provides a scalable, translatable framework for treating genetic diseases with high unmet medical need.
       - { kind: talk, time: "10:10 – 10:30", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
       - { kind: break, time: "10:30 – 10:40", label: "Break" }
       - { kind: talk, time: "10:40 – 11:00", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
