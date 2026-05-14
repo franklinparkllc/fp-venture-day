@@ -7,7 +7,7 @@ site:
   brand: "VENTURE.DAY"
   version: "v12.6"
   current_year: 2026
-  updated: "05.12.2026"
+  updated: "05.14.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -29,6 +29,7 @@ hosts:
 
 years:
   - year: 2026
+    date: "2026-09-23"
     tagline: Twelfth annual gathering
     supporters:
       - { name: Franklin Park,   url: "https://www.franklinparkllc.com/" }
@@ -58,6 +59,7 @@ years:
       - { kind: break, time: "11:40 – 1:00", label: "Lunch" }
 
   - year: 2025
+    date: "2025-10-29"
     tagline: Eleventh annual gathering
     supporters:
       - { name: Franklin Park,  url: "https://www.franklinparkllc.com/" }
@@ -110,6 +112,7 @@ years:
       - { kind: break, time: "11:45 – 1:00", label: "Lunch" }
 
   - year: 2024
+    date: "2024-10-16"
     tagline: Tenth annual gathering
     supporters:
       - { name: Franklin Park,  url: "https://www.franklinparkllc.com" }
@@ -167,6 +170,7 @@ years:
           Manipulating immune cells for precision cellular immunotherapies. Targets tissue-resident T cells, which contribute to chronic autoimmune diseases like psoriasis. Using genome engineering and high-throughput screening, his group has identified novel therapeutic targets that could dislodge these cells and offer potential cures.
 
   - year: 2023
+    date: "2023-10-06"
     tagline: Ninth annual gathering
     supporters:
       - { name: Franklin Park,  url: "https://www.franklinparkllc.com" }
@@ -224,6 +228,7 @@ years:
           Research on a novel glutamate transporter activator as a disease modifying and symptomatic treatment for Parkinson's disease and other neurodegenerative diseases.
 
   - year: 2022
+    date: "2026-10-06"
     tagline: Eighth annual gathering
     supporters:
       - { name: Franklin Park,  url: "https://www.franklinparkllc.com" }
@@ -275,6 +280,7 @@ years:
           Discovery and immunotherapeutic targeting of intracellular cancer drivers using peptide-centric chimeric antigen receptors (PC-CARs). PC-CARs target unmutated peptide derived from PHOX2B and recognize PHOX2B presented by other HLA types, breaking conventional HLA restriction and significantly expanding the addressable patient population. Demonstrated potent killing of neuroblastoma cells and complete tumor regression in mice.
 
   - year: 2021
+    date: "2021-11-03"
     tagline: Seventh annual gathering
     supporters:
       - { name: Franklin Park,    url: "https://www.franklinparkllc.com" }
