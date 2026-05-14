@@ -22,6 +22,13 @@ const outPath = process.argv[3] || 'index.html';
 
 // ---------- helpers ----------
 const pad2 = n => String(n).padStart(2, '0');
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const fmtDate = iso => {
+  if (!iso) return '';
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (!m) return iso;
+  return `${MONTHS[+m[2] - 1]} ${+m[3]}, ${m[1]}`;
+};
 const esc = s => String(s ?? '')
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
@@ -121,6 +128,7 @@ function renderYear(y, currentYear) {
     </div>
     <div class="year-status">
       <span class="badge">${isCurrent ? 'Live' : 'Archived'}</span>
+      ${y.date ? `<span class="date">${esc(fmtDate(y.date))}</span>` : ''}
       <span class="count">${pad2(talkCount)} talks</span>
     </div>
     <span class="chev">+</span>
@@ -293,7 +301,8 @@ const STYLES = `
     text-transform: uppercase; letter-spacing: 0.16em;
     color: var(--muted);
   }
-  .year-status .count { color: var(--ink); }
+  .year-status .date { color: var(--ink); text-transform: none; letter-spacing: 0.04em; }
+  .year-status .count { color: var(--muted); }
   .chev {
     width: 30px; height: 30px;
     border: 1px solid var(--line);
