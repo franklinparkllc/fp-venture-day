@@ -5,9 +5,9 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.7"
+  version: "v12.8"
   current_year: 2026
-  updated: "05.14.2026"
+  updated: "05.24.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -15,7 +15,7 @@ site:
     lede: "A working catalog of every talk given at Venture Day featuring novel science from Philadelphia's great institutions"
     cta:
       label: "Event Concierge"
-      url: "https://conference-concierge.up.railway.app/"
+      url: "https://conference-concierge.up.railway.app/e/venture-day-2026"
   colophon: "A catalog of unreleased biotech"
   year_range: "2014 — 2026"
 
