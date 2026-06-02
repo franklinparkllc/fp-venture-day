@@ -199,9 +199,9 @@ const STYLES = `
     color: var(--muted); max-width: 56ch;
     margin: 22px 0 0; text-wrap: balance;
   }
+  .hero .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
   .hero .cta {
     display: inline-flex; align-items: center; gap: 12px;
-    margin-top: 28px;
     padding: 12px 22px;
     font-family: var(--mono); font-size: 12px;
     letter-spacing: 0.16em; text-transform: uppercase;
@@ -448,7 +448,10 @@ const html = `<!doctype html>
   <div class="label">${esc(site.hero.label)}</div>
   <h1>${escAllowEm(site.hero.headline)}</h1>
   <p class="lede">${escAllowEm(site.hero.lede)}</p>
-  ${site.hero.cta ? `<a class="cta" href="${esc(site.hero.cta.url)}" target="_blank" rel="noopener">${esc(site.hero.cta.label)} <span class="arrow">→</span></a>` : ''}
+  ${(site.hero.cta || years[0]?.registration_url) ? `<div class="cta-row">
+    ${site.hero.cta ? `<a class="cta" href="${esc(site.hero.cta.url)}" target="_blank" rel="noopener">${esc(site.hero.cta.label)} <span class="arrow">→</span></a>` : ''}
+    ${years[0]?.registration_url ? `<a class="cta" href="${esc(years[0].registration_url)}" target="_blank" rel="noopener">Register for ${years[0].year} <span class="arrow">→</span></a>` : ''}
+  </div>` : ''}
 </header>
 
 <section class="wrap hosts-strip" id="hosts">
