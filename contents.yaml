@@ -22,8 +22,8 @@ site:
 hosts:
   - name: Franklin Park
     url: https://www.franklinparkllc.com/
-  - name: Wexford
-    url: https://wexfordscitech.com/about/wexford-team/
+  - name: uCity Square
+    url: https://ucitysquare.com/
   - name: Wilson Sonsini
     url: https://www.wsgr.com/en/people/matthew-j-meyer.html
 
