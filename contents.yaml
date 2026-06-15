@@ -5,9 +5,9 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.11"
+  version: "v12.13"
   current_year: 2026
-  updated: "06.02.2026"
+  updated: "06.15.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -24,8 +24,7 @@ hosts:
     url: https://www.franklinparkllc.com/
   - name: uCity Square
     url: https://ucitysquare.com/
-  - name: Wilson Sonsini
-    url: https://www.wsgr.com/en/people/matthew-j-meyer.html
+
 
 years:
   - year: 2026
@@ -35,7 +34,6 @@ years:
     supporters:
       - { name: Franklin Park,   url: "https://www.franklinparkllc.com/" }
       - { name: uCity Square,    url: "https://ucitysquare.com/" }
-      - { name: Wilson Sonsini,  url: "https://www.wsgr.com/en/people/matthew-j-meyer.html" }
     sessions:
       - { kind: remarks, time: "9:15 – 9:30",  speaker: "Opening Remarks" }
       - kind: talk
@@ -52,7 +50,13 @@ years:
         topic: "Next-generation genome engineering platforms"
         bio: >-
           Tyler Daniel is a senior PhD candidate in Chemical and Biomolecular Engineering and an NIH NAM T32 Fellow at the University of Pennsylvania's Center for Precision Engineering for Health. As a researcher in Dr. Xue Gao's lab, Tyler develops scalable next-generation genome engineering platforms that overcome critical safety bottlenecks and limitations of traditional DNA editing tools. He engineered novel DNA base editors that reduce off-target "bystander" mutations by over 80% and are applicable in a wider range of genomic contexts. In a compelling proof-of-concept, these tools successfully corrected Cystic Fibrosis-causing mutations, substantially improving CFTR protein function. Additionally, Tyler pioneered mvGPT, a modular "all-in-one" platform technology that enables simultaneous and independent gene editing, activation, and repression within a single system. Combining rational protein design with high-throughput validation, Tyler's research, recently published in Molecular Therapy and Nature Communications, provides a scalable, translatable framework for treating genetic diseases with high unmet medical need.
-      - { kind: talk, time: "10:10 – 10:30", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - kind: talk
+        time: "10:10 – 10:30"
+        speaker: Neeraj Lal
+        affil: "Monell Chemical Senses Center · Univ. of Pennsylvania — Neuroscience"
+        topic: "Brain circuits linking cold, metabolism, and survival"
+        bio: >-
+          Neeraj Lal is an Assistant Member at the Monell Chemical Senses Center and a member of the Department of Neuroscience at the University of Pennsylvania. A comparative physiologist and systems neuroscientist, his laboratory studies how brain circuits integrate environmental challenges with metabolic demands to shape survival behaviors, using both mice and hibernating animals as models. As lead author of a 2023 Nature study, Dr. Lal identified the xiphoid nucleus of the midline thalamus as a neural switch that drives cold-induced food seeking — explaining why prolonged cold and elevated energy expenditure trigger increased appetite. His laboratory combines whole-brain imaging, optical and chemogenetic circuit manipulation, stem cell models, molecular profiling, and AI-driven behavioral analysis. Dr. Lal received his PhD in Biochemistry and Structural Biology from the University of California, Davis, completed postdoctoral training at The Scripps Research Institute, and held a Branco Weiss Fellowship studying hibernating Arctic ground squirrels at the Institute of Arctic Biology, University of Alaska Fairbanks. He is a recipient of the 2026 Searle Scholars Program award.
       - { kind: break, time: "10:30 – 10:40", label: "Break" }
       - { kind: talk, time: "10:40 – 11:00", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
       - { kind: talk, time: "11:00 – 11:20", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
