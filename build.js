@@ -88,8 +88,12 @@ function renderSession(s, year, talkIdx) {
   // talk
   const id = `VD-${yy}-${pad2(talkIdx)}`;
   const topic = s.topic ? `<p class="session-topic">${escAllowEm(s.topic)}</p>` : '';
-  const bio = s.bio
-    ? `<div class="session-bio-wrap"><div class="session-bio-inner"><p class="session-bio">${esc(s.bio)}</p></div></div>`
+  const bioParas = s.bio
+    ? String(s.bio).split(/\n{1,}/).map(p => p.trim()).filter(Boolean)
+        .map(p => `<p class="session-bio">${esc(p)}</p>`).join('')
+    : '';
+  const bio = bioParas
+    ? `<div class="session-bio-wrap"><div class="session-bio-inner">${bioParas}</div></div>`
     : '';
   return `      <div class="session talk" data-open="false">
         <div class="session-id">${id}</div>
@@ -352,13 +356,16 @@ const STYLES = `
 
   .session-bio-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
   .session[data-open="true"] .session-bio-wrap { grid-template-rows: 1fr; }
-  .session-bio-inner { overflow: hidden; }
-  .session-bio {
-    padding: 10px 0 4px;
-    font-family: var(--serif); font-size: 16px; line-height: 1.6;
-    color: var(--muted); margin: 0; max-width: 70ch;
+  .session-bio-inner {
+    overflow: hidden;
+    margin: 10px 0 4px;
     border-left: 2px solid var(--accent); padding-left: 16px;
   }
+  .session-bio {
+    font-family: var(--serif); font-size: 16px; line-height: 1.6;
+    color: var(--muted); margin: 0; max-width: 70ch;
+  }
+  .session-bio + .session-bio { margin-top: 0.9em; }
 
   .session.break {
     grid-template-columns: 80px 110px 1fr 30px;
