@@ -5,9 +5,9 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.13"
+  version: "v12.14"
   current_year: 2026
-  updated: "06.15.2026"
+  updated: "06.30.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -58,7 +58,13 @@ years:
         bio: >-
           Neeraj Lal is an Assistant Member at the Monell Chemical Senses Center and a member of the Department of Neuroscience at the University of Pennsylvania. A comparative physiologist and systems neuroscientist, his laboratory studies how brain circuits integrate environmental challenges with metabolic demands to shape survival behaviors, using both mice and hibernating animals as models. As lead author of a 2023 Nature study, Dr. Lal identified the xiphoid nucleus of the midline thalamus as a neural switch that drives cold-induced food seeking — explaining why prolonged cold and elevated energy expenditure trigger increased appetite. His laboratory combines whole-brain imaging, optical and chemogenetic circuit manipulation, stem cell models, molecular profiling, and AI-driven behavioral analysis. Dr. Lal received his PhD in Biochemistry and Structural Biology from the University of California, Davis, completed postdoctoral training at The Scripps Research Institute, and held a Branco Weiss Fellowship studying hibernating Arctic ground squirrels at the Institute of Arctic Biology, University of Alaska Fairbanks. He is a recipient of the 2026 Searle Scholars Program award.
       - { kind: break, time: "10:30 – 10:40", label: "Break" }
-      - { kind: talk, time: "10:40 – 11:00", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - kind: talk
+        time: "10:40 – 11:00"
+        speaker: "Daeyeon Lee & Sagar Yadavali"
+        affil: "NSF AIRFoundry / InfiniFluidics"
+        topic: "Scaling RNA-LNP manufacturing with AI & microfluidics"
+        bio: >-
+          A joint session pairing the academic and commercial ends of RNA medicine manufacturing. Daeyeon Lee is the Russell Pearce and Elizabeth Crimian Heuer Professor in Chemical and Biomolecular Engineering at Penn and director of the NSF AIRFoundry — an $18M, six-year, open-access RNA BioFoundry led by Penn and the University of Puerto Rico that integrates artificial intelligence, automation and microfluidics to transform how RNA is designed, synthesized and delivered as lipid nanoparticles. Sagar Yadavali is CEO and co-founder of InfiniFluidics, a Penn spin-out he founded with Lee and David Issadore to commercialize Very Large Scale Microfluidic Integration (VLSMI) — parallelized chips that produce precision micro- and nanoparticles at industrially relevant scale. The company's injectable drug-delivery manufacturing platform has been backed by an NSF SBIR award. Together they address one of the field's central bottlenecks: turning RNA-LNP science into reproducible, scalable production.
       - { kind: talk, time: "11:00 – 11:20", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
       - { kind: talk, time: "11:20 – 11:40", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
       - { kind: break, time: "11:40 – 1:00", label: "Lunch" }
