@@ -5,9 +5,9 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.16"
+  version: "v12.17"
   current_year: 2026
-  updated: "07.08.2026"
+  updated: "07.15.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -54,7 +54,7 @@ years:
         time: "10:10 – 10:30"
         speaker: Neeraj Lal
         affil: "Monell Chemical Senses Center · Univ. of Pennsylvania — Neuroscience"
-        topic: "Brain circuits linking cold, metabolism, and survival"
+        topic: "Cold Adaptation Strategies Across Species: Deviation from Stasis in Homeo‘stasis’"
         bio: >-
           Dr. Neeraj Lal is an Assistant Member at the Monell Chemical Senses Center and member of the Department of Neuroscience at University of Pennsylvania, where his research investigates how organisms adapt to extreme physiological conditions. He earned his Ph.D. in plant biochemistry and structural biology at UC Davis, where he studied molecular signaling mechanisms underlying stress responses. During his postdoctoral training at Scripps Research, he uncovered neural circuit mechanisms of cold adaptation in mouse models (Lal et. al. Nature 2023). He was subsequently a Schmidt AI in Science Fellow at the UC San Diego Supercomputer Center, where he developed computational approaches for large-scale biological data. Since 2024, he has been a Branco Weiss Fellow at the Institute of Arctic Biology, Alaska, studying the extreme physiological adaptations of one of the most extreme hibernators on this planet: Arctic ground squirrels. In Nov 2025, he started his independent lab (ARCTIC lab). His work integrates molecular, neural, and systems-level approaches along with field studies in the arctic to understand the mechanisms that define homeostatic processes. He is a recipient of the 2026 Searle scholar award program.
       - { kind: break, time: "10:30 – 10:40", label: "Break" }

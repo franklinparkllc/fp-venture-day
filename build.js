@@ -334,7 +334,7 @@ const STYLES = `
   .session-time { font-family: var(--mono); font-size: 13px; color: var(--ink); align-self: start; padding-top: 3px; }
   .session-main { min-width: 0; }
   .session-topic {
-    font-family: var(--serif); font-style: italic;
+    font-family: var(--serif); font-style: normal;
     font-size: 16px; color: var(--accent);
     margin: 0 0 4px; line-height: 1.3;
   }
