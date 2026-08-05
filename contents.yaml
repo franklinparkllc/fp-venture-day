@@ -5,7 +5,7 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.18"
+  version: "v12.19"
   current_year: 2026
   updated: "08.04.2026"
   city: "philadelphia"
@@ -80,7 +80,7 @@ years:
         affil: "Drexel Univ. — Biomedical Engineering"
         topic: "Precision biomaterials for CAR-T and immune engineering"
         bio: >-
-          Dr. Xiao Huang is an Assistant Professor in Drexel University's School of Biomedical Engineering, Science and Health Systems, where he directs the Precision Immune Engineering Laboratory. His lab engineers biomaterials carrying precise chemical and physical signals that stimulate immune cells and mimic natural cell-cell communication, giving fine control over immune cell fate and phenotype within the local disease environment. The work spans three fronts: biomaterial toolkits that stimulate T cells and deliver CAR genes during manufacturing to yield cell products with the right memory or effector phenotype for a given tumor; implantable platforms that deliver antigens, co-stimulatory ligands and checkpoint inhibitors to reprogram T cells after infusion; and 3D tumor organoids with spatially controlled cytokine gradients used to study T cell migration and infiltration, with the goal of turning immunologically "cold" tumors "hot." Dr. Huang received his BS in Biological Sciences from Nanjing Agricultural University, an MS in Biochemical Engineering from East China University of Science and Technology, and a PhD in Chemistry and Materials from UC Santa Barbara, followed by postdoctoral training at UC San Francisco at the interface of biomaterials and immune engineering. He is a recipient of the 2022 Society for Biomaterials BWF BioInterfaces Rising Star Award and has published first-authored work in Nature Nanotechnology, Advanced Materials and ACS Nano.
+          Dr. Xiao Huang is an Assistant Professor in Drexel University's School of Biomedical Engineering, Science and Health Systems, where he leads the Huang Lab. The lab works at the intersection of biomaterials engineering, immunology and computational biology to decode and control the molecular language of immune cells. Its work runs along three themes: programming T cells through biomaterial platforms that give precise chemical and physical control over ligand presentation, used to study immune synapse organization and cell fate decisions; engineering enhanced T cells for cancer and immune disorders, with an emphasis on CAR-T expansion and reprogramming; and reshaping the immune microenvironment by targeting myeloid lineages, paired with transcriptomic analysis and computational modeling to understand what drives durable immune responses. Dr. Huang received his BS in Biological Sciences from Nanjing Agricultural University, an MS in Biochemical Engineering from East China University of Science and Technology, and a PhD in Chemistry and Materials from UC Santa Barbara, followed by postdoctoral training at UC San Francisco at the interface of biomaterials and immune engineering. He is a recipient of the 2022 BWF BioInterfaces Rising Star Award, and his lab is supported by the NIGMS MIRA program, the Margaret Q. Landenberger Foundation and the Drexel-Coulter commercialization program. His work has appeared in Nature Nanotechnology, Nature Communications, Nature Protocols, Advanced Materials, ACS Nano and Nano Letters.
       - { kind: talk, time: "11:20 – 11:40", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
       - { kind: break, time: "11:40 – 1:00", label: "Lunch" }
 
