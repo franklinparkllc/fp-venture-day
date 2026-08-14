@@ -5,9 +5,9 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.19"
+  version: "v12.20"
   current_year: 2026
-  updated: "08.04.2026"
+  updated: "08.14.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -81,7 +81,13 @@ years:
         topic: "Precision biomaterials for CAR-T and immune engineering"
         bio: >-
           Dr. Xiao Huang is an Assistant Professor in Drexel University's School of Biomedical Engineering, Science and Health Systems, where he leads the Huang Lab. The lab works at the intersection of biomaterials engineering, immunology and computational biology to decode and control the molecular language of immune cells. Its work runs along three themes: programming T cells through biomaterial platforms that give precise chemical and physical control over ligand presentation, used to study immune synapse organization and cell fate decisions; engineering enhanced T cells for cancer and immune disorders, with an emphasis on CAR-T expansion and reprogramming; and reshaping the immune microenvironment by targeting myeloid lineages, paired with transcriptomic analysis and computational modeling to understand what drives durable immune responses. Dr. Huang received his BS in Biological Sciences from Nanjing Agricultural University, an MS in Biochemical Engineering from East China University of Science and Technology, and a PhD in Chemistry and Materials from UC Santa Barbara, followed by postdoctoral training at UC San Francisco at the interface of biomaterials and immune engineering. He is a recipient of the 2022 BWF BioInterfaces Rising Star Award, and his lab is supported by the NIGMS MIRA program, the Margaret Q. Landenberger Foundation and the Drexel-Coulter commercialization program. His work has appeared in Nature Nanotechnology, Nature Communications, Nature Protocols, Advanced Materials, ACS Nano and Nano Letters.
-      - { kind: talk, time: "11:20 – 11:40", speaker: TBD, topic: "To be announced", bio: "Speaker to be announced." }
+      - kind: talk
+        time: "11:20 – 11:40"
+        speaker: David Weiner
+        affil: "The Wistar Institute — Vaccine & Immunotherapy Center"
+        topic: "Stealth"
+        bio: >-
+          Dr. David B. Weiner is Executive Vice President of The Wistar Institute and Director of its Vaccine & Immunotherapy Center, where he holds the W.W. Smith Charitable Trust Distinguished Professorship in Cancer Research within the Ellen and Ronald Caplan Cancer Center. Widely regarded as the father of DNA vaccines, he led the first clinical studies of the technology and drove the advances in gene optimization and electroporation-mediated delivery that made synthetic nucleic acid medicines viable in humans. His laboratory develops DNA vaccines and DNA-encoded monoclonal antibodies (DMAbs), and has produced the first Zika vaccine to enter clinical trials, the first MERS vaccine, an advanced Ebola vaccine, therapeutic vaccines for HPV-associated cancers, and immunotherapies for prostate, liver and other tumors. He is Professor Emeritus at the University of Pennsylvania's Perelman School of Medicine, where he spent most of his academic career before joining Wistar. Dr. Weiner received his BS in biology from Stony Brook University and his MS and PhD from the University of Cincinnati, the latter in developmental biology with a focus on molecular immunology. He is a Fellow of the AAAS, a recipient of the NIH Director's Translational Research Award and the Pennsylvania Drug Industry Award in Scientific Excellence, and served as President of the International Society for Vaccines.
       - { kind: break, time: "11:40 – 1:00", label: "Lunch" }
 
   - year: 2025
