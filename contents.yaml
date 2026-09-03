@@ -5,9 +5,9 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.21"
+  version: "v12.23"
   current_year: 2026
-  updated: "08.26.2026"
+  updated: "09.03.2026"
   city: "philadelphia"
   hero:
     label: "Catalog · Twelfth annual gathering"
@@ -45,11 +45,11 @@ years:
           Noor Momin is an Assistant Professor in the Department of Bioengineering at the University of Pennsylvania. Her laboratory studies the role of the immune system in cardiovascular diseases. Specifically, they leverage their expertise in protein engineering, pharmacokinetic modeling and cardio-immunology to design precision therapeutics for heart failure, fibrosis, and arrhythmia. Most recently, her lab engineered a nascent extracellular matrix-targeted cytokine therapy that boosts cardiac repair after a myocardial infarction. This novel targeted immunotherapy offers an approach distinct from current interventions to prevent heart failure after myocardial infarction. Dr. Momin received her PhD from Massachusetts Institute of Technology and completed her postdoc at Massachusetts General Hospital. She is a recipient of multiple awards from the American Heart Association and an NIH Maximizing Investigators' Research Award.
       - kind: talk
         time: "9:50 – 10:10"
-        speaker: Tyler Daniel
-        affil: "Univ. of Pennsylvania — Chemical & Biomolecular Engineering"
-        topic: "Next-generation genome engineering platforms"
+        speaker: Xiao Huang
+        affil: "Drexel Univ. — Biomedical Engineering"
+        topic: "Precision biomaterials for CAR-T and immune engineering"
         bio: >-
-          Tyler Daniel is a senior PhD candidate in Chemical and Biomolecular Engineering and an NIH NAM T32 Fellow at the University of Pennsylvania's Center for Precision Engineering for Health. As a researcher in Dr. Xue Gao's lab, Tyler develops scalable next-generation genome engineering platforms that overcome critical safety bottlenecks and limitations of traditional DNA editing tools. He engineered novel DNA base editors that reduce off-target "bystander" mutations by over 80% and are applicable in a wider range of genomic contexts. In a compelling proof-of-concept, these tools successfully corrected Cystic Fibrosis-causing mutations, substantially improving CFTR protein function. Additionally, Tyler pioneered mvGPT, a modular "all-in-one" platform technology that enables simultaneous and independent gene editing, activation, and repression within a single system. Combining rational protein design with high-throughput validation, Tyler's research, recently published in Molecular Therapy and Nature Communications, provides a scalable, translatable framework for treating genetic diseases with high unmet medical need.
+          Dr. Xiao Huang is an Assistant Professor in Drexel University's School of Biomedical Engineering, Science and Health Systems, where he leads the Huang Lab. The lab works at the intersection of biomaterials engineering, immunology and computational biology to decode and control the molecular language of immune cells. Its work runs along three themes: programming T cells through biomaterial platforms that give precise chemical and physical control over ligand presentation, used to study immune synapse organization and cell fate decisions; engineering enhanced T cells for cancer and immune disorders, with an emphasis on CAR-T expansion and reprogramming; and reshaping the immune microenvironment by targeting myeloid lineages, paired with transcriptomic analysis and computational modeling to understand what drives durable immune responses. Dr. Huang received his BS in Biological Sciences from Nanjing Agricultural University, an MS in Biochemical Engineering from East China University of Science and Technology, and a PhD in Chemistry and Materials from UC Santa Barbara, followed by postdoctoral training at UC San Francisco at the interface of biomaterials and immune engineering. He is a recipient of the 2022 BWF BioInterfaces Rising Star Award, and his lab is supported by the NIGMS MIRA program, the Margaret Q. Landenberger Foundation and the Drexel-Coulter commercialization program. His work has appeared in Nature Nanotechnology, Nature Communications, Nature Protocols, Advanced Materials, ACS Nano and Nano Letters.
       - kind: talk
         time: "10:10 – 10:30"
         speaker: Neeraj Lal
@@ -60,6 +60,13 @@ years:
       - { kind: break, time: "10:30 – 10:40", label: "Break" }
       - kind: talk
         time: "10:40 – 11:00"
+        speaker: Tyler Daniel
+        affil: "Univ. of Pennsylvania — Chemical & Biomolecular Engineering"
+        topic: "Next-generation genome engineering platforms"
+        bio: >-
+          Tyler Daniel is a senior PhD candidate in Chemical and Biomolecular Engineering and an NIH NAM T32 Fellow at the University of Pennsylvania's Center for Precision Engineering for Health. As a researcher in Dr. Xue Gao's lab, Tyler develops scalable next-generation genome engineering platforms that overcome critical safety bottlenecks and limitations of traditional DNA editing tools. He engineered novel DNA base editors that reduce off-target "bystander" mutations by over 80% and are applicable in a wider range of genomic contexts. In a compelling proof-of-concept, these tools successfully corrected Cystic Fibrosis-causing mutations, substantially improving CFTR protein function. Additionally, Tyler pioneered mvGPT, a modular "all-in-one" platform technology that enables simultaneous and independent gene editing, activation, and repression within a single system. Combining rational protein design with high-throughput validation, Tyler's research, recently published in Molecular Therapy and Nature Communications, provides a scalable, translatable framework for treating genetic diseases with high unmet medical need.
+      - kind: talk
+        time: "11:00 – 11:20"
         speaker: "Daeyeon Lee & Sagar Yadavali"
         affil: "NSF AIRFoundry / InfiniFluidics"
         topic: "Scaling RNA-LNP manufacturing with AI & microfluidics"
@@ -75,20 +82,20 @@ years:
 
           Together they address one of the field's central bottlenecks: turning RNA-LNP science into reproducible, scalable production.
       - kind: talk
-        time: "11:00 – 11:20"
-        speaker: Xiao Huang
-        affil: "Drexel Univ. — Biomedical Engineering"
-        topic: "Precision biomaterials for CAR-T and immune engineering"
-        bio: >-
-          Dr. Xiao Huang is an Assistant Professor in Drexel University's School of Biomedical Engineering, Science and Health Systems, where he leads the Huang Lab. The lab works at the intersection of biomaterials engineering, immunology and computational biology to decode and control the molecular language of immune cells. Its work runs along three themes: programming T cells through biomaterial platforms that give precise chemical and physical control over ligand presentation, used to study immune synapse organization and cell fate decisions; engineering enhanced T cells for cancer and immune disorders, with an emphasis on CAR-T expansion and reprogramming; and reshaping the immune microenvironment by targeting myeloid lineages, paired with transcriptomic analysis and computational modeling to understand what drives durable immune responses. Dr. Huang received his BS in Biological Sciences from Nanjing Agricultural University, an MS in Biochemical Engineering from East China University of Science and Technology, and a PhD in Chemistry and Materials from UC Santa Barbara, followed by postdoctoral training at UC San Francisco at the interface of biomaterials and immune engineering. He is a recipient of the 2022 BWF BioInterfaces Rising Star Award, and his lab is supported by the NIGMS MIRA program, the Margaret Q. Landenberger Foundation and the Drexel-Coulter commercialization program. His work has appeared in Nature Nanotechnology, Nature Communications, Nature Protocols, Advanced Materials, ACS Nano and Nano Letters.
-      - kind: talk
         time: "11:20 – 11:40"
+        speaker: Sahily Reyes-Esteves
+        affil: "Univ. of Pennsylvania — Neurology · Penn Institute for RNA Innovation"
+        topic: "Targeting lipid nanoparticles across the blood-brain barrier for acute stroke"
+        bio: >-
+          Dr. Sahily Reyes-Esteves is an Assistant Professor of Neurology at the University of Pennsylvania's Perelman School of Medicine and an attending physician in the Division of Vascular Neurology, where she leads an independent research group within Jacob Brenner's bioengineering lab. A stroke neurologist and physician-scientist, she works on a problem the blood-brain barrier makes unusually hard: delivering a drug to injured brain tissue without dosing the rest of the body. Her approach is to decorate lipid nanoparticles with antibodies that bind the brain endothelium itself, turning the barrier into the target rather than the obstacle. In work published in the Journal of Neuroinflammation in 2025, she showed that LNPs carrying IL-10 mRNA and targeted to VCAM-1 on inflamed brain vasculature reduced injury and improved functional outcomes in experimental intracerebral hemorrhage — a condition with no approved drug therapy. Related work from the group has extended targeted LNP delivery to acute ischemic stroke and to DNA-loaded nanoparticles. Dr. Reyes-Esteves received her BS and MD from the University of Puerto Rico and her PhD from the MD Anderson/UTHealth Graduate School of Biomedical Sciences, and completed her neurology residency and vascular neurology fellowship at Penn. She also writes on racial and ethnic disparities in neurological care and on neuro-palliative care for historically minoritized groups.
+      - kind: talk
+        time: "11:40 – 12:00"
         speaker: David Weiner
         affil: "The Wistar Institute — Vaccine & Immunotherapy Center"
         topic: "Stealth"
         bio: >-
           Dr. David B. Weiner is Executive Vice President of The Wistar Institute and Director of its Vaccine & Immunotherapy Center, where he holds the W.W. Smith Charitable Trust Distinguished Professorship in Cancer Research within the Ellen and Ronald Caplan Cancer Center. Widely regarded as the father of DNA vaccines, he led the first clinical studies of the technology and drove the advances in gene optimization and electroporation-mediated delivery that made synthetic nucleic acid medicines viable in humans. His laboratory develops DNA vaccines and DNA-encoded monoclonal antibodies (DMAbs), and has produced the first Zika vaccine to enter clinical trials, the first MERS vaccine, an advanced Ebola vaccine, therapeutic vaccines for HPV-associated cancers, and immunotherapies for prostate, liver and other tumors. He is Professor Emeritus at the University of Pennsylvania's Perelman School of Medicine, where he spent most of his academic career before joining Wistar. Dr. Weiner received his BS in biology from Stony Brook University and his MS and PhD from the University of Cincinnati, the latter in developmental biology with a focus on molecular immunology. He is a Fellow of the AAAS, a recipient of the NIH Director's Translational Research Award and the Pennsylvania Drug Industry Award in Scientific Excellence, and served as President of the International Society for Vaccines.
-      - { kind: break, time: "11:40 – 1:00", label: "Lunch" }
+      - { kind: break, time: "12:00 – 1:00", label: "Lunch" }
 
   - year: 2025
     date: "2025-10-29"
