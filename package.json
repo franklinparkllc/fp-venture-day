@@ -19,7 +19,7 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "js-yaml": "^4.1.0"
+        "js-yaml": "^4.3.2"
     },
     "devDependencies": {
         "nodemon": "^3.0.1"
