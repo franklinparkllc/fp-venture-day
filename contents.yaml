@@ -5,7 +5,7 @@
 site:
   title: "Venture Day — Specimen Index"
   brand: "VENTURE.DAY"
-  version: "v12.25"
+  version: "v12.26"
   current_year: 2026
   updated: "09.16.2026"
   city: "philadelphia"
@@ -33,8 +33,8 @@ years:
     registration_url: "https://lu.ma/5tyqj2u8"
     venue:
       name: "Quorum at the Science Center"
-      address: "3711 Market St, 2nd Floor, Philadelphia, PA 19104"
-      url: "https://www.google.com/maps/search/?api=1&query=3711+Market+St+Philadelphia+PA+19104"
+      address: "3675 Market St, 2nd Floor, Philadelphia, PA 19104"
+      url: "https://www.google.com/maps/search/?api=1&query=3675+Market+St+Philadelphia+PA+19104"
     supporters:
       - { name: Franklin Park,   url: "https://www.franklinparkllc.com/" }
       - { name: uCity Square,    url: "https://ucitysquare.com/" }
