@@ -63,6 +63,12 @@ function renderSupporters(supporters) {
   ).join('');
 }
 
+function renderVenueLink(v) {
+  return v.url
+    ? `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.name)}</a>`
+    : esc(v.name);
+}
+
 function renderSession(s, year, talkIdx) {
   const yy = String(year).slice(2);
 
@@ -129,6 +135,11 @@ function renderYear(y, currentYear) {
         <span class="lbl">Hosts:</span>
         ${renderSupporters(y.supporters)}
       </div>
+      ${y.venue ? `<div class="venue">
+        <span class="lbl">Venue:</span>
+        ${renderVenueLink(y.venue)}
+        ${y.venue.address ? `<span class="addr">· ${esc(y.venue.address)}</span>` : ''}
+      </div>` : ''}
     </div>
     <div class="year-status">
       <span class="badge">${isCurrent ? 'Live' : 'Archived'}</span>
@@ -218,6 +229,15 @@ const STYLES = `
   }
   .hero .cta:hover { background: var(--accent); color: var(--bg); }
   .hero .cta .arrow { font-family: var(--serif); font-size: 15px; line-height: 1; }
+  .hero .venue-line {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em;
+    color: var(--muted); margin: 18px 0 0;
+  }
+  .hero .venue-line a {
+    text-decoration: none; color: var(--ink);
+    border-bottom: 1px solid var(--line); padding-bottom: 1px;
+  }
+  .hero .venue-line a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
   .hosts-strip {
     border-top: 1px solid var(--line);
@@ -297,6 +317,14 @@ const STYLES = `
   }
   .year-info .supporters a:hover { color: var(--accent); border-bottom-color: var(--accent); }
   .year-info .supporters .sep { color: var(--dim); }
+  .year-info .venue { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+  .year-info .venue .lbl { color: var(--dim); text-transform: uppercase; letter-spacing: 0.18em; }
+  .year-info .venue a {
+    text-decoration: none; color: var(--ink);
+    border-bottom: 1px solid var(--line); padding-bottom: 1px;
+  }
+  .year-info .venue a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .year-info .venue .addr { color: var(--muted); }
 
   .year-status {
     display: flex; flex-direction: column; align-items: flex-end;
@@ -459,6 +487,7 @@ const html = `<!doctype html>
     ${site.hero.cta ? `<a class="cta" href="${esc(site.hero.cta.url)}" target="_blank" rel="noopener">${esc(site.hero.cta.label)} <span class="arrow">→</span></a>` : ''}
     ${years[0]?.registration_url ? `<a class="cta" href="${esc(years[0].registration_url)}" target="_blank" rel="noopener">Register for ${years[0].year} <span class="arrow">→</span></a>` : ''}
   </div>` : ''}
+  ${years[0]?.venue ? `<p class="venue-line">${years[0].date ? `${esc(fmtDate(years[0].date))} · ` : ''}${renderVenueLink(years[0].venue)}${years[0].venue.address ? ` · ${esc(years[0].venue.address)}` : ''}</p>` : ''}
 </header>
 
 <section class="wrap hosts-strip" id="hosts">
